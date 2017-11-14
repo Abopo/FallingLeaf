@@ -7,10 +7,13 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour {
     public GameObject gameOverScreen;
     public Text distanceText;
+    public Text coinsText;
 
     float _distanceTracker = 0f;
     float _lastYPos;
     float _yDif;
+
+    int _totalCoins;
 
     // Use this for initialization
     void Start () {
@@ -22,7 +25,13 @@ public class LevelManager : MonoBehaviour {
         _yDif = Mathf.Abs(Mathf.Abs(transform.position.y) - Mathf.Abs(_lastYPos));
         _distanceTracker += _yDif;
         _lastYPos = transform.position.y;
-        distanceText.text = ((int)_distanceTracker).ToString();
+
+        distanceText.text = ((int)_distanceTracker/100).ToString() + "m";
+    }
+
+    public void EarnCoin() {
+        _totalCoins += 10;
+        coinsText.text = "$ " + _totalCoins.ToString();
     }
 
     public void EndGame() {

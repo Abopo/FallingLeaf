@@ -40,9 +40,10 @@ GameObject:
   - component: {fileID: 4630801367574534}
   - component: {fileID: 33764737546586966}
   - component: {fileID: 23479939547334724}
+  - component: {fileID: 136145287581073204}
   m_Layer: 0
   m_Name: Big Leaves
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4035821964565292}
   - component: {fileID: 114330825001678236}
+  - component: {fileID: 65791194212711138}
   m_Layer: 0
   m_Name: Branch4
   m_TagString: Untagged
@@ -139,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1492464422740702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.293007, y: -20.613678, z: -23.065628}
+  m_LocalPosition: {x: 29, y: -53.7, z: -23.065628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4161257191284146}
@@ -478,6 +480,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65791194212711138
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492464422740702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.771811, y: 12.816971, z: 7.8977356}
+  m_Center: {x: -2.2916155, y: 5.9084854, z: -26.815964}
 --- !u!114 &114330825001678236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -489,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85375be5250d80247a9b323f6b4a8bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOffset: 40
+  spawnOffset: 70
 --- !u!135 &135175729991479058
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -502,6 +516,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136145287581073204
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253742324155378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 14.190526
+  m_Height: 50.547997
+  m_Direction: 0
+  m_Center: {x: 0.2701858, y: -0.015050757, z: 0.05657893}
 --- !u!136 &136503445062734086
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -509,9 +536,9 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177271370246380}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 11.875602
-  m_Height: 43.570217
-  m_Direction: 1
-  m_Center: {x: 107.21302, y: 5.4738398, z: 2.9056537}
+  m_Radius: 9.413995
+  m_Height: 24.000101
+  m_Direction: 2
+  m_Center: {x: 105.96434, y: 7.7370663, z: -19.869043}

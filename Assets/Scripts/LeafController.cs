@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MeshDistort;
 
 public class LeafController : MonoBehaviour {
     public Transform mainCamera;
@@ -8,8 +9,8 @@ public class LeafController : MonoBehaviour {
 
     public Vector2 _velocity;
     // X
-    float _moveAccelerationX = 60f;
-    float _moveDecelerationX = 40f;
+    float _moveAccelerationX = 80f;
+    float _moveDecelerationX = 10f;
     float _maxMoveSpeedX = 100f;
     float _curMaxMoveSpeedX;
     // Y
@@ -28,6 +29,8 @@ public class LeafController : MonoBehaviour {
 
     bool _hasDied;
 
+    AnimatedDistort _animatedDistort;
+
     // Currnet starting position : (0, 261, 43)
 
     // Use this for initialization
@@ -36,6 +39,7 @@ public class LeafController : MonoBehaviour {
         _velocity.y = 0;
 
         _hasDied = false;
+        _animatedDistort = GetComponentInChildren<AnimatedDistort>();
     }
 
     // Update is called once per frame
@@ -49,11 +53,11 @@ public class LeafController : MonoBehaviour {
         DetermineVelocity();
 
         transform.Translate(_velocity.x * Time.deltaTime, _velocity.y * Time.deltaTime, 0f, Space.World);
-        if (transform.position.x > 38) {
-            transform.position = new Vector3(38, transform.position.y, transform.position.z);
+        if (transform.position.x > 60) {
+            transform.position = new Vector3(60, transform.position.y, transform.position.z);
             _velocity.x = 0;
-        } else if (transform.position.x < -38) {
-            transform.position = new Vector3(-38, transform.position.y, transform.position.z);
+        } else if (transform.position.x < -60) {
+            transform.position = new Vector3(-60, transform.position.y, transform.position.z);
             _velocity.x = 0;
         }
 
@@ -77,45 +81,28 @@ public class LeafController : MonoBehaviour {
         // X velocity
         float dif = Vector3.Dot(up, transform.up);
 
-        // TODO - I haven't found a clean way to math this yet
-        // If we are upright
-        if (dif > 0) {
-            // If we are leaning right
-            if (transform.rotation.z < 0) {
-                // Go right
-                dif = Vector3.Dot(upright, transform.up);
-                _curMaxMoveSpeedX = _maxMoveSpeedX * (-1 + Mathf.Abs(dif));
+        // If we are leaning right
+        if (transform.rotation.eulerAngles.z < 360 && transform.rotation.eulerAngles.z > 270 ||
+            transform.rotation.eulerAngles.z < 180 && transform.rotation.eulerAngles.z > 90) {
+            // Go right
+            dif = Vector3.Dot(upright, transform.up);
+            _curMaxMoveSpeedX = _maxMoveSpeedX * (-1 + Mathf.Abs(dif));
+            if (_velocity.x > _curMaxMoveSpeedX) {
+                xVel = _velocity.x - (_moveDecelerationX * Time.deltaTime);
+            } else {
                 xVel = _velocity.x + (_moveAccelerationX * Time.deltaTime);
-
-                // If we are leaning left
-            } else if (transform.rotation.z > 0) {
-                // Go left
-                dif = Vector3.Dot(upleft, transform.up);
-                _curMaxMoveSpeedX = -_maxMoveSpeedX * (-1 + Mathf.Abs(dif));
+            }
+            // If we are leaning left
+        } else if (transform.rotation.eulerAngles.z > 0 && transform.rotation.eulerAngles.z < 90 ||
+                   transform.rotation.eulerAngles.z > 180 && transform.rotation.eulerAngles.z < 270) {
+            // Go left
+            dif = Vector3.Dot(upleft, transform.up);
+            _curMaxMoveSpeedX = -_maxMoveSpeedX * (-1 + Mathf.Abs(dif));
+            if (_velocity.x < _curMaxMoveSpeedX) {
+                xVel = _velocity.x + (_moveDecelerationX * Time.deltaTime);
+            } else {
                 xVel = _velocity.x - (_moveAccelerationX * Time.deltaTime);
             }
-            // If we are upside down
-        } else if (dif < 0) {
-            // If we are leaning right
-            if (transform.rotation.z < 0) {
-                // Go right
-                dif = Vector3.Dot(downleft, transform.up);
-                _curMaxMoveSpeedX = _maxMoveSpeedX * (-1 + Mathf.Abs(dif));
-                xVel = _velocity.x + (_moveAccelerationX * Time.deltaTime);
-
-                // If we are leaning left
-            } else if (transform.rotation.z > 0) {
-                // Go left
-                dif = Vector3.Dot(downright, transform.up);
-                _curMaxMoveSpeedX = -_maxMoveSpeedX * (-1 + Mathf.Abs(dif));
-                xVel = _velocity.x - (_moveAccelerationX * Time.deltaTime);
-            }
-        }
-
-        if (xVel > _curMaxMoveSpeedX) {
-            xVel = _velocity.x - (_moveDecelerationX * Time.deltaTime);
-        } else if (xVel < _curMaxMoveSpeedX) {
-            xVel = _velocity.x + (_moveDecelerationX * Time.deltaTime);
         }
 
         // Y velocity
@@ -123,14 +110,29 @@ public class LeafController : MonoBehaviour {
         _curMaxMoveSpeedY = -_maxMoveSpeedY * Mathf.Abs(dif);
         yVel = _velocity.y - (_moveAccelerationY * Time.deltaTime);
 
+        // If we need to decelerate
         if (yVel < _curMaxMoveSpeedY) {
             yVel = _velocity.y + (_moveDecelerationY * Time.deltaTime);
+            xVel += Mathf.Sign(xVel) * ((_moveDecelerationY * Time.deltaTime)/2);
+
+            AnimateDistortion(dif);
         }
         if (yVel > -15f) {
             yVel = -15f;
         }
 
         _velocity = new Vector2(xVel, yVel);
+    }
+
+    void AnimateDistortion(float dif) {
+        if (Mathf.Abs(dif) < 0.75f) {
+            // Show a slowing down style of animation
+            _animatedDistort.animate = AnimatedDistort.Animate.force;
+            // Based on how fast we are falling, increase the min/max values and animation speed.
+            _animatedDistort.minValue = 0.8f + (0.02f * -_velocity.y);
+            _animatedDistort.maxValue = _animatedDistort.minValue + (0.2f + 0.02f * -_velocity.y);
+            _animatedDistort.constantSpeed = 8 + (0.01f * -_velocity.y);
+        } 
     }
 
     public void Die() {

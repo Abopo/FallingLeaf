@@ -108,11 +108,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4220217676338946}
   - component: {fileID: 33194770814588000}
-  - component: {fileID: 135000886050346002}
   - component: {fileID: 23339267466598034}
   m_Layer: 0
   m_Name: Big Leaves
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -460,19 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85375be5250d80247a9b323f6b4a8bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOffset: 40
---- !u!135 &135000886050346002
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938845627162128}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  spawnOffset: 70
 --- !u!136 &136090424615201476
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -480,7 +467,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818381853058944}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 12.892316
   m_Height: 43.194542

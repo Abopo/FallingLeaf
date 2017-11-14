@@ -1,0 +1,311 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel Distort
+
+struct BufferObjectData
+{
+	uint isPingPong;//4b
+	uint calculateInWorldSpace; //4b
+	float animationSpeed; //4b
+	int type; //4b
+	float force; //4b
+	float3 tile; //12b
+};
+
+struct BufferFrameData
+{
+	float movementDisplacement; // 4b
+	float3 bMin;  // 12b
+	float3 bMax; //12b
+	float3 bNormalized;  // 12b
+	float3 bCenter; //12b
+};
+
+
+StructuredBuffer<BufferObjectData> data;
+StructuredBuffer<BufferFrameData> frame;
+ 
+
+
+StructuredBuffer<float> displacedForceX;
+StructuredBuffer<float> displacedForceY;
+StructuredBuffer<float> displacedForceZ;
+
+StructuredBuffer<float> displacedForceXY;
+StructuredBuffer<float> displacedForceXZ;
+StructuredBuffer<float> displacedForceYX;
+StructuredBuffer<float> displacedForceYZ;
+StructuredBuffer<float> displacedForceZX;
+StructuredBuffer<float> displacedForceZY;
+
+StructuredBuffer<float> staticCurveX;
+StructuredBuffer<float> staticCurveY;
+StructuredBuffer<float> staticCurveZ;
+
+StructuredBuffer<float4x4> matrixList;
+
+RWStructuredBuffer<float3> vertices;
+
+
+
+float Repeat(float num, float min, float max)
+{
+	if (num < min)
+		return max - (min - num) % (max - min);
+	else
+		return min + (num - min) % (max - min);
+
+}
+
+float PingPong(float num, float min, float max)
+{
+	min = Repeat(num, min, 2 * max);
+	if (min < max)
+		return min;
+	else
+		return 2 * max - min;
+
+}
+
+float3 MultMatrix(float4x4 m, float3 pos)
+{
+	return mul(m, float4(pos.xyz, 1)).xyz;
+}
+
+float4 Euler(float3 axis, float angle) {
+	float value = (angle * 0.5) * 3.14159265f / 180;
+	float factor = sin(value);
+	return normalize(float4(
+		axis.x * factor,
+		axis.y * factor,
+		axis.z * factor,
+			cos(value)
+		));
+}
+
+float3 Rotate(float3 position, float3 axis, float angle)
+{
+	float4 q = Euler(axis, angle);
+	float3 v = position.xyz;
+	return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v);
+}
+
+
+
+float random(float seed, float force)
+{
+	float2 noise = (frac(sin(dot(float2(seed, seed), float2(12.9898, 78.233)*2.0)) * 43758.5453));
+	return (noise.x * force) - (force * 0.5);
+}
+
+
+float StaticX(float pnt) {
+	return staticCurveX[floor(pnt * 254)];
+}
+float StaticY(float pnt) {
+	return staticCurveY[floor(pnt * 254)];
+}
+float StaticZ(float pnt) {
+	return staticCurveZ[floor(pnt * 254)];
+}
+
+float DisplacedX(float pnt) {
+	return displacedForceX[floor(pnt * 254)];
+}
+float DisplacedY(float pnt) {
+	return displacedForceY[floor(pnt * 254)];
+}
+float DisplacedZ(float pnt) {
+	return displacedForceZ[floor(pnt * 254)];
+}
+
+float DisplacedXY(float pnt) {
+	return displacedForceXY[floor(pnt * 254)];
+}
+float DisplacedXZ(float pnt) {
+	return displacedForceXZ[floor(pnt * 254)];
+}
+float DisplacedYX(float pnt) {
+	return displacedForceYX[floor(pnt * 254)];
+}
+float DisplacedYZ(float pnt) {
+	return displacedForceYZ[floor(pnt * 254)];
+}
+float DisplacedZX(float pnt) {
+	return displacedForceZX[floor(pnt * 254)];
+}
+float DisplacedZY(float pnt) {
+	return displacedForceZY[floor(pnt * 254)];
+}
+
+[numthreads(64,1,1)]
+void Distort (uint3 id : SV_DispatchThreadID)
+{
+	
+	vertices[id.x] = MultMatrix(matrixList[0], vertices[id.x]);
+
+	float x = 0;
+	float y = 0;
+	float z = 0;
+	float3 pos;
+	uint3 displacement;
+	
+	float multiplier;
+
+	uint yAxis = 0;
+
+	//for (uint i = 0; i < count; i++) {
+		float3 percentage = vertices[id.x];
+
+		if (data[0].calculateInWorldSpace) {
+			multiplier = StaticX((percentage.x - frame[0].bMin.x) / frame[0].bNormalized.x) *
+				StaticY((percentage.y - frame[0].bMin.y) / frame[0].bNormalized.y) *
+				StaticZ((percentage.z - frame[0].bMin.z) / frame[0].bNormalized.z);
+
+			percentage.x /= frame[0].bNormalized.x;
+			percentage.y /= frame[0].bNormalized.y;
+			percentage.z /= frame[0].bNormalized.z;
+		}
+		else {
+
+			percentage.x -= frame[0].bMin.x;
+			percentage.y -= frame[0].bMin.y;
+			percentage.z -= frame[0].bMin.z;
+
+			percentage.x /= frame[0].bNormalized.x;
+			percentage.y /= frame[0].bNormalized.y;
+			percentage.z /= frame[0].bNormalized.z;
+
+			multiplier = StaticX(Repeat(percentage.x,0,1)) * StaticY(Repeat(percentage.y,0,1)) * StaticZ(Repeat(percentage.z,0,1));
+
+			
+		}
+
+
+		//multiplier com problema
+
+		if (data[0].isPingPong)
+		{
+			percentage.x = PingPong((percentage.x + frame[0].movementDisplacement) * data[0].tile.x, 0, 1);
+			percentage.y = PingPong((percentage.y + frame[0].movementDisplacement) * data[0].tile.y, 0, 1);
+			percentage.z = PingPong((percentage.z + frame[0].movementDisplacement) * data[0].tile.z, 0, 1);
+		}
+		else
+		{
+			percentage.x = (percentage.x + frame[0].movementDisplacement) * data[0].tile.x;
+			percentage.y = (percentage.y + frame[0].movementDisplacement) * data[0].tile.y;
+			percentage.z = (percentage.z + frame[0].movementDisplacement) * data[0].tile.z;
+		}
+
+		
+
+		switch (data[0].type)
+		{
+		case 0:
+			//Stretch
+			
+			x += DisplacedXY(percentage.y) * data[0].force;
+			x += DisplacedXZ(percentage.z) * data[0].force;
+
+			y += DisplacedYX(percentage.x) * data[0].force;
+			y += DisplacedYZ(percentage.z) * data[0].force;
+
+			z += DisplacedZX(percentage.x) * data[0].force;
+			z += DisplacedZY(percentage.y) * data[0].force;
+			
+			
+
+			break;
+
+			
+		case 1:
+			//Spin
+			float aX = data[0].force * multiplier * DisplacedX(percentage.x) * 10;
+			float aY = data[0].force * multiplier * DisplacedY(percentage.y) * 10;
+			float aZ = data[0].force * multiplier * DisplacedZ(percentage.z) * 10;
+
+			float3 pp = vertices[id.x] - frame[0].bCenter;
+			float3 dir = Rotate(Rotate(Rotate(pp, float3(0, 0, 1), aZ), float3(1, 0, 0), aX), float3(0,1,0), aY);
+			vertices[id.x] += frame[0].bCenter + dir - vertices[id.x];
+			vertices[id.x] = MultMatrix(matrixList[1], vertices[id.x]);
+
+			return;
+			
+		
+		case 2:
+			//Random
+			x += random(int(vertices[id.x].x * 100 + frame[0].movementDisplacement), data[0].force)  * DisplacedXY(percentage.y);
+			x += random(int(vertices[id.x].x * 100 + frame[0].movementDisplacement), data[0].force ) * DisplacedXZ(percentage.z);
+
+			y += random(int(vertices[id.x].y * 100 + frame[0].movementDisplacement), data[0].force ) * DisplacedYX(percentage.x);
+			y += random(int(vertices[id.x].y * 100 + frame[0].movementDisplacement), data[0].force ) * DisplacedYZ(percentage.z);
+			 
+			z += random(int(vertices[id.x].z * 100 + frame[0].movementDisplacement), data[0].force ) * DisplacedZX(percentage.x);
+			z += random(int(vertices[id.x].z * 100 + frame[0].movementDisplacement), data[0].force ) * DisplacedZY(percentage.y);
+
+			break;
+			
+		case 3:
+			//Inflate
+			//Get the direction of the point relative to the bound center
+			float3 dirI = normalize(vertices[id.x] - frame[0].bCenter);
+
+			//Apply the force to each axis
+			x = DisplacedX(percentage.x) * dirI.x * data[0].force;
+			y = DisplacedY(percentage.y) * dirI.y * data[0].force;
+			z = DisplacedZ(percentage.z) * dirI.z * data[0].force;
+			break;
+		case 4:
+            float xForce = (DisplacedXZ(percentage.z) * data[0].force + DisplacedXY(percentage.y) * data[0].force) * 0.5f;
+            float yForce = (DisplacedYX(percentage.x) * data[0].force + DisplacedYZ(percentage.z) * data[0].force) * 0.5f;
+            float zForce = (DisplacedZX(percentage.x) * data[0].force + DisplacedZY(percentage.y) * data[0].force) * 0.5f;
+
+            if (xForce > 0)
+                vertices[id.x].x =  lerp(vertices[id.x].x,
+                    frame[0].bMax.x,
+                    min(xForce, 1));
+            else
+                vertices[id.x].x = lerp(vertices[id.x].x,
+                frame[0].bMin.x,
+                min(-xForce, 1));
+
+
+            if (yForce > 0)
+                vertices[id.x].y = lerp(vertices[id.x].y,
+                    frame[0].bMax.y,
+                    min(yForce,1));
+            else
+                vertices[id.x].y = lerp(vertices[id.x].y,
+               frame[0].bMin.y,
+                min(-yForce, 1));
+
+
+
+            if (zForce > 0)
+                vertices[id.x].z = lerp(vertices[id.x].z,
+                    frame[0].bMax.z,
+                    min(1, zForce));
+            else
+                vertices[id.x].z = lerp(vertices[id.x].z,
+                frame[0].bMin.z,
+                min(-zForce, 1));
+
+			vertices[id.x] = MultMatrix(matrixList[1], vertices[id.x]);
+
+             return;
+		break;
+		
+			
+		}
+		
+			
+	//}
+	
+	
+	//vertices[id.x] = float3(vertices[id.x].x + (x * multiplier), vertices[id.x].y + (y * multiplier), vertices[id.x].z + (z * multiplier)) ;
+	
+	
+		vertices[id.x] += float3(x * multiplier, y * multiplier, z * multiplier);
+		vertices[id.x] = MultMatrix(matrixList[1], vertices[id.x]);
+}
+
+ 

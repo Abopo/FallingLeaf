@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85375be5250d80247a9b323f6b4a8bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOffset: 35
+  spawnOffset: 65
 --- !u!135 &135933740986179826
 SphereCollider:
   m_ObjectHideFlags: 1

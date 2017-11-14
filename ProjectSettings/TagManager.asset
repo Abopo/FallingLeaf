@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle Death Plane
   - Obstacle
+  - PlayerLeaf
   layers:
   - Default
   - TransparentFX
