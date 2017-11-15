@@ -27,7 +27,7 @@ public class ObstacleSpawner : Spawner {
     void SpawnBranch() {
         int r = Random.Range(0, 2+_difficulty);
         GameObject newBranch = GameObject.Instantiate(branchObj[r]);
-        float posX = Random.Range(-65f, 65f);
+        float posX = Random.Range(-50f, 50f);
         float posZ = transform.position.z + newBranch.GetComponent<Obstacle>().spawnOffset;
         newBranch.transform.position = new Vector3(posX, transform.position.y, posZ);
     }

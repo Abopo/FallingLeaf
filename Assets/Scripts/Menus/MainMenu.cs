@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        //PlayerPrefs.SetInt("Coins", 0);
 	}
 	
 	// Update is called once per frame
@@ -17,5 +17,9 @@ public class MainMenu : MonoBehaviour {
 
     public void LoadGameplay() {
         SceneManager.LoadScene("Gameplay");
+    }
+
+    public void LoadStore() {
+        SceneManager.LoadScene("Store");
     }
 }

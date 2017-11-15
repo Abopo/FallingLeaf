@@ -13,15 +13,18 @@ public class LevelManager : MonoBehaviour {
     float _lastYPos;
     float _yDif;
 
-    int _totalCoins;
+    int _collectedCoins;
 
     // Use this for initialization
     void Start () {
         _lastYPos = transform.position.y;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        coinsText.text = "$ " + PlayerPrefs.GetInt("Coins").ToString();
+        _collectedCoins = PlayerPrefs.GetInt("Coins");
+    }
+
+    // Update is called once per frame
+    void Update () {
         _yDif = Mathf.Abs(Mathf.Abs(transform.position.y) - Mathf.Abs(_lastYPos));
         _distanceTracker += _yDif;
         _lastYPos = transform.position.y;
@@ -30,16 +33,28 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void EarnCoin() {
-        _totalCoins += 10;
-        coinsText.text = "$ " + _totalCoins.ToString();
+        _collectedCoins += 10;
+        coinsText.text = "$ " + _collectedCoins.ToString();
     }
 
     public void EndGame() {
         gameOverScreen.SetActive(true);
+
+        // Save coins
+        int totalCoins = PlayerPrefs.GetInt("Coins");
+        PlayerPrefs.SetInt("Coins", _collectedCoins + totalCoins);
     }
 
     public void ResetLevel() {
         SceneManager.LoadScene("Gameplay");
+    }
+
+    public void LoadStore() {
+        SceneManager.LoadScene("Store");
+    }
+
+    public void LoadHome() {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public int GetDistanceTraveled() {

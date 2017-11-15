@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InfiniteTreeTrunk : MonoBehaviour {
     public GameObject treeTrunkObj;
-    GameObject[] treeTrunks = new GameObject[2];
+    GameObject[] treeTrunks = new GameObject[4];
 
     float _spawnDistanceTracker = 0f;
     float _spawnDistance = 378.9f;
@@ -14,10 +14,14 @@ public class InfiniteTreeTrunk : MonoBehaviour {
     // Use this for initialization
     void Start () {
         // Spawn initial trunks
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y, 250f);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y+378.9f, 250f);
         treeTrunks[0] = GameObject.Instantiate(treeTrunkObj, pos, Quaternion.identity);
         pos.y = treeTrunks[0].transform.position.y - 378.9f;
         treeTrunks[1] = GameObject.Instantiate(treeTrunkObj, pos, Quaternion.identity);
+        pos.y = treeTrunks[1].transform.position.y - 378.9f;
+        treeTrunks[2] = GameObject.Instantiate(treeTrunkObj, pos, Quaternion.identity);
+        pos.y = treeTrunks[2].transform.position.y - 378.9f;
+        treeTrunks[3] = GameObject.Instantiate(treeTrunkObj, pos, Quaternion.identity);
 
         _lastYPos = transform.position.y;
     }
@@ -34,11 +38,13 @@ public class InfiniteTreeTrunk : MonoBehaviour {
     }
 
     void SpawnTrunk() {
-        Vector3 pos = new Vector3(transform.position.x, treeTrunks[1].transform.position.y - 378.9f, 250f);
+        Vector3 pos = new Vector3(transform.position.x, treeTrunks[3].transform.position.y - 378.9f, 250f);
         GameObject newTrunk = GameObject.Instantiate(treeTrunkObj, pos, Quaternion.identity);
         DestroyObject(treeTrunks[0]);
 
         treeTrunks[0] = treeTrunks[1];
-        treeTrunks[1] = newTrunk;
+        treeTrunks[1] = treeTrunks[2];
+        treeTrunks[2] = treeTrunks[3];
+        treeTrunks[3] = newTrunk;
     }
 }

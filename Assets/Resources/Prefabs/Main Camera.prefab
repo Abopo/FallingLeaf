@@ -172,7 +172,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1785807585592896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 220.4, z: 64.2}
+  m_LocalPosition: {x: -0.8, y: 358, z: 64.2}
   m_LocalScale: {x: 208.11145, y: 1, z: 180.2325}
   m_Children: []
   m_Father: {fileID: 4173603840274614}
@@ -185,7 +185,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292658530162858}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -128.5, z: 60}
+  m_LocalPosition: {x: 0, y: -362, z: 60}
   m_LocalScale: {x: 78.16354, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4173603840274614}
@@ -222,7 +222,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1500
-  field of view: 60
+  field of view: 101.77284
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 0}
   distanceText: {fileID: 0}
+  coinsText: {fileID: 0}
 --- !u!124 &124124721782194494
 Behaviour:
   m_ObjectHideFlags: 1
