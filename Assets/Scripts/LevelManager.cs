@@ -41,8 +41,7 @@ public class LevelManager : MonoBehaviour {
         gameOverScreen.SetActive(true);
 
         // Save coins
-        int totalCoins = PlayerPrefs.GetInt("Coins");
-        PlayerPrefs.SetInt("Coins", _collectedCoins + totalCoins);
+        PlayerPrefs.SetInt("Coins", _collectedCoins);
     }
 
     public void ResetLevel() {

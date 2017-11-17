@@ -15,11 +15,11 @@ public class Cloud : MonoBehaviour {
             //transform.Rotate(0f, -90f, 0f, Space.World);
         }
 
-        velX = Random.Range(-5f, 5f);
+        velX = Random.Range(-10f, 10f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //transform.Translate(velX * Time.deltaTime, 0f, 0f, Space.World);
+        transform.Translate(velX * Time.deltaTime, 0f, 0f, Space.World);
 	}
 }

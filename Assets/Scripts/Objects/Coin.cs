@@ -6,6 +6,8 @@ public class Coin : MonoBehaviour {
 
     public float rotationSpeed;
 
+    bool _grabbed;
+
     LevelManager _levelManager;
 
 	// Use this for initialization
@@ -16,16 +18,13 @@ public class Coin : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f, Space.World);
-	}
+    }
 
     private void OnTriggerEnter(Collider collision) {
-        if (collision.tag == "PlayerLeaf") {
-            // Play sound
-
+        if (collision.tag == "PlayerLeaf" && !_grabbed) {
             // Update coin count in level manager
             _levelManager.EarnCoin();
 
-            // Once sound is done destroy self
             DestroyObject(this.gameObject);
         } else if(collision.tag == "Obstacle Death Plane") {
             DestroyObject(this.gameObject);

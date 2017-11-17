@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
-    public float spawnOffset;
+    public float spawnOffsetZ;
+    public float spawnOffsetX;
+    public int spawnChance;
+    public int spawnChanceChange;
+    public int minSpawnDistance;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void UpdateSpawnChance() {
+        spawnChance = spawnChance + spawnChanceChange;
+    }
 
     private void OnTriggerEnter(Collider collision) {
         if(collision.tag == "Obstacle Death Plane") {

@@ -6,6 +6,7 @@ using MeshDistort;
 public class LeafController : MonoBehaviour {
     public Transform mainCamera;
     public MeshRenderer model;
+    public GameEffects gameEffects;
 
     public Vector2 _velocity;
     // X
@@ -19,6 +20,12 @@ public class LeafController : MonoBehaviour {
     float _maxMoveSpeedY = 100f;
     float _curMaxMoveSpeedY;
 
+    float _windForce = 150f;
+    float _windTime = 0.5f;
+    float _windTimer = 0.6f;
+    public float windResource = 1.6f;
+    public float windResourceMax = 1.6f;
+
     // Direction vectors
     Vector3 up = new Vector3(0f, 1f, 0f);
     Vector3 right = new Vector3(1f, 0f, 0f);
@@ -30,6 +37,10 @@ public class LeafController : MonoBehaviour {
     bool _hasDied;
 
     AnimatedDistort _animatedDistort;
+
+    public bool HasDied {
+        get { return _hasDied; }
+    }
 
     // Currnet starting position : (0, 261, 43)
 
@@ -48,21 +59,27 @@ public class LeafController : MonoBehaviour {
             return;
         }
 
+        UpdateWind();
+
         CheckInput();
 
         DetermineVelocity();
 
         transform.Translate(_velocity.x * Time.deltaTime, _velocity.y * Time.deltaTime, 0f, Space.World);
-        if (transform.position.x > 60) {
-            transform.position = new Vector3(60, transform.position.y, transform.position.z);
-            _velocity.x = 0;
-        } else if (transform.position.x < -60) {
-            transform.position = new Vector3(-60, transform.position.y, transform.position.z);
-            _velocity.x = 0;
-        }
+
+        StayInBounds();
 
         // Move camera along
         mainCamera.position = new Vector3(mainCamera.position.x, transform.position.y-15f, mainCamera.position.z);
+    }
+
+    void UpdateWind() {
+        _windTimer += Time.deltaTime;
+        windResource += Time.deltaTime / 25;
+        if (windResource > windResourceMax) {
+            windResource = windResourceMax;
+        }
+        //Debug.Log(windResource.ToString());
     }
 
     void CheckInput() {
@@ -73,6 +90,11 @@ public class LeafController : MonoBehaviour {
         if (Input.GetKey(KeyCode.D)) {
             // rotate right
             transform.Rotate(0f, 0f, -100 * Time.deltaTime);
+        }
+        if(Input.GetKey(KeyCode.Space) && windResource > _windTime) {
+            // Wind burst
+            _windTimer = 0f;
+            gameEffects.WindBurst();
         }
     }
 
@@ -108,17 +130,24 @@ public class LeafController : MonoBehaviour {
         // Y velocity
         dif = Vector3.Dot(right, transform.up);
         _curMaxMoveSpeedY = -_maxMoveSpeedY * Mathf.Abs(dif);
-        yVel = _velocity.y - (_moveAccelerationY * Time.deltaTime);
+        // If we used a wind burst, override downward velocity
+        if (_windTimer <= _windTime) {
+            yVel = _velocity.y + (_windForce * Time.deltaTime);
+            windResource -= Time.deltaTime;
+        } else {
+            yVel = _velocity.y - (_moveAccelerationY * Time.deltaTime);
 
-        // If we need to decelerate
-        if (yVel < _curMaxMoveSpeedY) {
-            yVel = _velocity.y + (_moveDecelerationY * Time.deltaTime);
-            xVel += Mathf.Sign(xVel) * ((_moveDecelerationY * Time.deltaTime)/2);
+            // If we need to decelerate
+            if (yVel < _curMaxMoveSpeedY) {
+                yVel = _velocity.y + (_moveDecelerationY * Time.deltaTime);
+                xVel += Mathf.Sign(xVel) * ((_moveDecelerationY * Time.deltaTime) / 2);
 
-            AnimateDistortion(dif);
-        }
-        if (yVel > -15f) {
-            yVel = -15f;
+                AnimateDistortion(dif);
+            }
+            if (yVel > -15f) {
+                //yVel = -15f;
+                yVel = _velocity.y - (_moveAccelerationY * Time.deltaTime);
+            }
         }
 
         _velocity = new Vector2(xVel, yVel);
@@ -133,6 +162,19 @@ public class LeafController : MonoBehaviour {
             _animatedDistort.maxValue = _animatedDistort.minValue + (0.2f + 0.02f * -_velocity.y);
             _animatedDistort.constantSpeed = 8 + (0.01f * -_velocity.y);
         } 
+    }
+
+    void StayInBounds() {
+        if (transform.position.x > 60) {
+            transform.position = new Vector3(60, transform.position.y, transform.position.z);
+            _velocity.x = 0;
+        } else if (transform.position.x < -60) {
+            transform.position = new Vector3(-60, transform.position.y, transform.position.z);
+            _velocity.x = 0;
+        }
+        if (transform.position.y > 650) {
+            transform.position = new Vector3(transform.position.x, 650, transform.position.z);
+        }
     }
 
     public void Die() {

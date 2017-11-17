@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //PlayerPrefs.SetInt("Coins", 0);
+        PlayerPrefs.SetInt("Coins", 0);
 	}
 	
 	// Update is called once per frame
