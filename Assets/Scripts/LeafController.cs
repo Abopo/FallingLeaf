@@ -7,6 +7,7 @@ public class LeafController : MonoBehaviour {
     public Transform mainCamera;
     public MeshRenderer model;
     public GameEffects gameEffects;
+    public SphereCollider magnetCollider;
 
     public Vector2 _velocity;
     // X
@@ -15,24 +16,22 @@ public class LeafController : MonoBehaviour {
     float _maxMoveSpeedX = 100f;
     float _curMaxMoveSpeedX;
     // Y
-    float _moveAccelerationY = 50f;
-    float _moveDecelerationY = 40f;
+    float _moveAccelerationY = 40f;
+    float _moveDecelerationY = 50f;
     float _maxMoveSpeedY = 100f;
     float _curMaxMoveSpeedY;
 
-    float _windForce = 150f;
+    float _windForce = 175f;
     float _windTime = 0.5f;
     float _windTimer = 0.6f;
-    public float windResource = 1.6f;
-    public float windResourceMax = 1.6f;
+    public float windResource = 0.51f;
+    public float windResourceMax = 0.51f;
 
     // Direction vectors
     Vector3 up = new Vector3(0f, 1f, 0f);
     Vector3 right = new Vector3(1f, 0f, 0f);
     Vector3 upright = new Vector3(1f, 1f, 0f);
     Vector3 upleft = new Vector3(-1f, 1f, 0f);
-    Vector3 downleft = new Vector3(-1f, -1f, 0f);
-    Vector3 downright = new Vector3(1f, -1f, 0f);
 
     bool _hasDied;
 
@@ -44,6 +43,10 @@ public class LeafController : MonoBehaviour {
 
     // Currnet starting position : (0, 261, 43)
 
+    private void Awake() {
+        InitPowerUps();
+    }
+
     // Use this for initialization
     void Start() {
         _velocity.x = 0;
@@ -51,6 +54,16 @@ public class LeafController : MonoBehaviour {
 
         _hasDied = false;
         _animatedDistort = GetComponentInChildren<AnimatedDistort>();
+    }
+
+    void InitPowerUps() {
+        if(PlayerPrefs.GetInt("UpdraftUnlocked") == 1) {
+            windResourceMax = 1.1f;
+            windResource = 1.1f;
+        }
+        if(PlayerPrefs.GetInt("MagnetUnlocked") == 1) {
+            magnetCollider.enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -134,6 +147,9 @@ public class LeafController : MonoBehaviour {
         if (_windTimer <= _windTime) {
             yVel = _velocity.y + (_windForce * Time.deltaTime);
             windResource -= Time.deltaTime;
+            if(windResource < 0) {
+                windResource = 0;
+            }
         } else {
             yVel = _velocity.y - (_moveAccelerationY * Time.deltaTime);
 
@@ -144,7 +160,7 @@ public class LeafController : MonoBehaviour {
 
                 AnimateDistortion(dif);
             }
-            if (yVel > -15f) {
+            if (yVel > -20f) {
                 //yVel = -15f;
                 yVel = _velocity.y - (_moveAccelerationY * Time.deltaTime);
             }
@@ -175,6 +191,11 @@ public class LeafController : MonoBehaviour {
         if (transform.position.y > 650) {
             transform.position = new Vector3(transform.position.x, 650, transform.position.z);
         }
+    }
+
+    public void Hit() {
+        _velocity.x = _velocity.x / 2f;
+        _velocity.y = _velocity.y / 2f;
     }
 
     public void Die() {

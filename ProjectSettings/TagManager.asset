@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - PlayerLeaf
   - Coin
+  - Magnet
+  - Sunlight
   layers:
   - Default
   - TransparentFX

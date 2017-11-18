@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Cloud : MonoBehaviour {
-
-    float velX;
+    public float velX;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +14,9 @@ public class Cloud : MonoBehaviour {
             //transform.Rotate(0f, -90f, 0f, Space.World);
         }
 
-        velX = Random.Range(-10f, 10f);
+        if (velX == 0) {
+            velX = Random.Range(-10f, 10f);
+        }
 	}
 	
 	// Update is called once per frame

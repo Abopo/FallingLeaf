@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour {
-    public Text distanceText;
+    //public Text distanceText;
 
-    LevelManager _levelManager;
+    //LevelManager _levelManager;
 
 	// Use this for initialization
 	void Start () {
-        _levelManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<LevelManager>();
+        //_levelManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<LevelManager>();
 
         //distanceText.text = _levelManager.GetDistanceTraveled().ToString();
     }

@@ -65,6 +65,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1796413883312130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4301076645193546}
+  - component: {fileID: 135222585231120356}
+  m_Layer: 0
+  m_Name: Magnet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1878602044807184
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +110,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4581180929970412}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4301076645193546
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796413883312130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4581180929970412}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4337476864994974
 Transform:
@@ -128,12 +157,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1330030158202864}
   m_LocalRotation: {x: -0.0069862637, y: 0.008123029, z: -0.0059575667, w: 0.9999249}
-  m_LocalPosition: {x: -0.1, y: 260, z: 40}
+  m_LocalPosition: {x: -0.1, y: 609, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337476864994974}
   - {fileID: 4249581357390618}
   - {fileID: 4355002548838806}
+  - {fileID: 4301076645193546}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.795, y: 0.93600005, z: -0.689}
@@ -624,7 +654,7 @@ MonoBehaviour:
     showInEditor: 1
     calculateInWorldSpace: 0
   combinedBounds:
-    m_Center: {x: 0.37640098, y: 259.8306, z: 39.67073}
+    m_Center: {x: 0.37640098, y: 608.83057, z: 39.67073}
     m_Extent: {x: 6.29167, y: 1.4509838, z: 6.334593}
   showDebugLines: 0
   debugLinesDistance: 1
@@ -647,6 +677,20 @@ MonoBehaviour:
   model: {fileID: 23831275223046992}
   gameEffects: {fileID: 0}
   _velocity: {x: 0, y: 0}
+  windResource: 0.51
+  windResourceMax: 0.51
+--- !u!135 &135222585231120356
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796413883312130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198557366577301456
 ParticleSystem:
   m_ObjectHideFlags: 1

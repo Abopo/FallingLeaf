@@ -7,11 +7,14 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        PlayerPrefs.SetInt("Coins", 0);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        PlayerPrefs.SetInt("Coins", 1000);
+        PlayerPrefs.SetInt("ShieldUnlocked", 0);
+        PlayerPrefs.SetInt("UpdraftUnlocked", 0);
+        PlayerPrefs.SetInt("MagnetUnlocked", 0);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
