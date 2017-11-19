@@ -70,8 +70,8 @@ public class ObstacleSpawner : Spawner {
     void UpdateDifficulty() {
         if (_subDifficulty >= 10) {
             _mainDifficulty++;
-            if(_mainDifficulty > 3) {
-                _mainDifficulty = 3;
+            if(_mainDifficulty > 4) {
+                _mainDifficulty = 4;
             }
             _subDifficulty = 0;
         }

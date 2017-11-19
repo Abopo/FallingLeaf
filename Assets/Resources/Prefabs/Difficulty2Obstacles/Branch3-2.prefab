@@ -461,7 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOffsetZ: 70
   spawnOffsetX: 50
-  spawnChance: 10
+  spawnChance: 15
   spawnChanceChange: 1
   minSpawnDistance: 0
 --- !u!136 &136090424615201476

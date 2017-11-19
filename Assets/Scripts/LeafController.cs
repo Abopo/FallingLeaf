@@ -34,12 +34,12 @@ public class LeafController : MonoBehaviour {
     Vector3 upleft = new Vector3(-1f, 1f, 0f);
 
     bool _hasDied;
-
-    AnimatedDistort _animatedDistort;
-
     public bool HasDied {
         get { return _hasDied; }
     }
+
+    AnimatedDistort _animatedDistort;
+    AudioSource _audioSource;
 
     // Currnet starting position : (0, 261, 43)
 
@@ -54,6 +54,7 @@ public class LeafController : MonoBehaviour {
 
         _hasDied = false;
         _animatedDistort = GetComponentInChildren<AnimatedDistort>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void InitPowerUps() {
@@ -108,6 +109,7 @@ public class LeafController : MonoBehaviour {
             // Wind burst
             _windTimer = 0f;
             gameEffects.WindBurst();
+            _audioSource.Play();
         }
     }
 

@@ -30,8 +30,8 @@ public class DayNightCycle : MonoBehaviour {
     Vector3 duskSkyboxRotation = new Vector3(-25f, -5f, 2f);
 
     // Night settings
-    Color nightLightColor = new Color32(104, 160, 225, 255);
-    float nightLightIntensity = 0.1f;
+    Color nightLightColor = new Color32(7, 50, 140, 255);
+    float nightLightIntensity = 2.0f;
     Vector3 nightRotation = new Vector3(65f, 30f, 30f);
     Color nightsFogColor = new Color32(50, 45, 170, 255);
     Material nightSkybox;
@@ -90,11 +90,12 @@ public class DayNightCycle : MonoBehaviour {
             loadCounter++;
         }
 
-        if(loadCounter > 0) {
+        if(loadCounter > 1) {
             curTime++;
             if((int)curTime > 2) {
                 curTime = TIME.DAY;
             }
+            loadCounter = 0;
         }
 
         // Find the light

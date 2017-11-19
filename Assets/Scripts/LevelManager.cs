@@ -40,6 +40,12 @@ public class LevelManager : MonoBehaviour {
     public void EndGame() {
         gameOverScreen.SetActive(true);
 
+        // If we beat our best distance, save it
+        int convertedDistance = ((int)_distanceTracker / 100);
+        if (PlayerPrefs.GetInt("BestDistance") < convertedDistance) {
+            PlayerPrefs.SetInt("BestDistance", convertedDistance);
+        }
+
         // Save coins
         PlayerPrefs.SetInt("Coins", _collectedCoins);
     }
