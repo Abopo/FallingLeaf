@@ -13,7 +13,7 @@ public class GameEffects : MonoBehaviour {
     void Start () {
         if (leafPlayer.windResourceMax < 1.0f) {
             windMeter.sizeDelta = new Vector2(windMeter.sizeDelta.x, 45f);
-            windMeter.parent.localPosition = new Vector3(windMeter.parent.localPosition.x, 430f, windMeter.parent.localPosition.z);
+            //windMeter.parent.localPosition = new Vector3(windMeter.parent.localPosition.x, 430f, windMeter.parent.localPosition.z);
         } else if(leafPlayer.windResourceMax < 1.5f) {
             windMeter.sizeDelta = new Vector2(windMeter.sizeDelta.x, 95f);
             //windMeter.parent.localPosition = new Vector3(windMeter.parent.localPosition.x, 380f, windMeter.parent.localPosition.z);

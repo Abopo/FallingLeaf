@@ -5,6 +5,7 @@ using MeshDistort;
 
 public class LeafController : MonoBehaviour {
     public Transform mainCamera;
+    public ObstacleSpawner obstacleSpawner;
     public MeshRenderer model;
     public GameEffects gameEffects;
     public SphereCollider magnetCollider;
@@ -37,6 +38,10 @@ public class LeafController : MonoBehaviour {
     public bool HasDied {
         get { return _hasDied; }
     }
+
+    // These track how long the player is riding the border (will spawn a branch there if it's too long)
+    float _borderTime = 5.0f;
+    float _borderTimer = 0.0f;
 
     AnimatedDistort _animatedDistort;
     AudioSource _audioSource;
@@ -82,6 +87,7 @@ public class LeafController : MonoBehaviour {
         transform.Translate(_velocity.x * Time.deltaTime, _velocity.y * Time.deltaTime, 0f, Space.World);
 
         StayInBounds();
+        CheckPosition();
 
         // Move camera along
         mainCamera.position = new Vector3(mainCamera.position.x, transform.position.y-15f, mainCamera.position.z);
@@ -192,6 +198,16 @@ public class LeafController : MonoBehaviour {
         }
         if (transform.position.y > 650) {
             transform.position = new Vector3(transform.position.x, 650, transform.position.z);
+        }
+    }
+
+    void CheckPosition() {
+        if(transform.position.x > 55 || transform.position.x < -55) {
+            _borderTimer += Time.deltaTime;
+            if(_borderTimer >= _borderTime) {
+                obstacleSpawner.SpawnBorderBranch(transform.position.x);
+                _borderTimer = 0f;
+            }
         }
     }
 

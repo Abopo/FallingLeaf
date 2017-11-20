@@ -11,6 +11,8 @@ public class ObstacleSpawner : Spawner {
 
     float _minSpawnDist; // used to decide the next spawn distance
 
+    Obstacle _borderBranch; // spawned on the borders of the game to prevent players from staying there
+
     // Use this for initialization
     protected override void Start () {
         base.Start();
@@ -18,6 +20,7 @@ public class ObstacleSpawner : Spawner {
         _mainDifficulty = 1;
 
         _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/Difficulty1Obstacles");
+        _borderBranch = _curObstacles[0];
 
         UpdateDifficulty();
         _spawnDistance = DecideNextSpawnDistance();
@@ -87,5 +90,13 @@ public class ObstacleSpawner : Spawner {
         float nextSpawn;
         nextSpawn = _minSpawnDist + (150 - (25 * _mainDifficulty) + Random.Range(-25, 25));
         return nextSpawn;
+    }
+
+    public void SpawnBorderBranch(float xPos) {
+        Obstacle newObstacle = GameObject.Instantiate(_borderBranch);
+        float posX = xPos < 0 ? -58 : 58;
+        float posZ = transform.position.z + newObstacle.spawnOffsetZ;
+        newObstacle.transform.position = new Vector3(posX, transform.position.y, posZ);
+        //_minSpawnDist = newObstacle.minSpawnDistance;
     }
 }
