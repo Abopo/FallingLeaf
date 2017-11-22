@@ -19,7 +19,7 @@ public class ObstacleSpawner : Spawner {
 
         _mainDifficulty = 1;
 
-        _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/Difficulty1Obstacles");
+        _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone1");
         _borderBranch = _curObstacles[0];
 
         UpdateDifficulty();
@@ -31,7 +31,6 @@ public class ObstacleSpawner : Spawner {
         base.Update();
         _tracker += _yDif;
         if(_tracker > 200) {
-            _subDifficulty++;
             UpdateDifficulty();
             _tracker = 0;
         }
@@ -71,24 +70,47 @@ public class ObstacleSpawner : Spawner {
     }
 
     void UpdateDifficulty() {
+        _subDifficulty++;
+
         if (_subDifficulty >= 10) {
             _mainDifficulty++;
-            if(_mainDifficulty > 4) {
+            if (_mainDifficulty > 3) {
                 _mainDifficulty = 4;
-            }
-            _subDifficulty = 0;
-        }
 
-        foreach (Obstacle o in _curObstacles) {
-            o.UpdateSpawnChance();
+                // At this point, new zone will be selected randomly
+                LoadNextZone();
+            } else {
+                // Load in the  new obstacles
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone" + _mainDifficulty);
+            }
+
+            _subDifficulty = 0;
+        } else {
+            foreach (Obstacle o in _curObstacles) {
+                o.UpdateSpawnChance();
+            }
         }
-        
-        _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/Difficulty" + _mainDifficulty + "Obstacles");
+    }
+
+    void LoadNextZone() {
+        int r = Random.Range(0, 3);
+
+        switch (r) {
+            case 0: // Flower zone
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/FlowerZone");
+                break;
+            case 1: // Bird zone
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BirdZone");
+                break;
+            case 2: // Basic Zone 4
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone4");
+                break;
+        }
     }
 
     protected override float DecideNextSpawnDistance() {
         float nextSpawn;
-        nextSpawn = _minSpawnDist + (150 - (25 * _mainDifficulty) + Random.Range(-25, 25));
+        nextSpawn = _minSpawnDist + (125 - (3 * _subDifficulty) + Random.Range(-25, 25));
         return nextSpawn;
     }
 

@@ -28,11 +28,13 @@ public class MainMenu : MonoBehaviour {
     void SetScreenResolution() {
         Resolution[] resolutions = Screen.resolutions;
 
-        int width, height;
-        height = resolutions[resolutions.Length-1].height;
-        width = (int)(height * 0.625f);
+        if (resolutions.Length > 0) {
+            int width, height;
+            height = resolutions[resolutions.Length - 1].height;
+            width = (int)(height * 0.625f); // 10:16 ratio
 
-        Screen.SetResolution(width, height, true);
+            Screen.SetResolution(width, height, true);
+        }
     }
 
     // Update is called once per frame
