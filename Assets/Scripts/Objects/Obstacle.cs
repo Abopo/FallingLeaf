@@ -5,6 +5,8 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour {
     public float spawnOffsetZ;
     public float spawnOffsetX;
+    public float spawnOffsetLeft;
+    public float spawnOffsetRight;
     public int spawnChance;
     public int spawnChanceChange;
     public int minSpawnDistance;

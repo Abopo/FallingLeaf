@@ -25,9 +25,9 @@ public class GameEffects : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        windBurstEffect.transform.position = new Vector3(leafPlayer.transform.position.x,
-                                                        windBurstEffect.transform.position.y,
-                                                        windBurstEffect.transform.position.z);
+        //windBurstEffect.transform.position = new Vector3(leafPlayer.transform.position.x,
+        //                                                windBurstEffect.transform.position.y,
+        //                                                windBurstEffect.transform.position.z);
 
         windMeter.sizeDelta = new Vector2(windMeter.sizeDelta.x, 
                                          windMeterHeight * (leafPlayer.windResource / leafPlayer.windResourceMax));

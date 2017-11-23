@@ -341,10 +341,6 @@ Prefab:
       propertyPath: windMeter
       value: 
       objectReference: {fileID: 592329318}
-    - target: {fileID: 4916634248733464, guid: b866eede51afc5c4fab71e15926a9720, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b866eede51afc5c4fab71e15926a9720, type: 2}
   m_IsPrefabParent: 0

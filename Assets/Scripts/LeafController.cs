@@ -40,7 +40,7 @@ public class LeafController : MonoBehaviour {
     }
 
     // These track how long the player is riding the border (will spawn a branch there if it's too long)
-    float _borderTime = 5.0f;
+    float _borderTime = 4.0f;
     float _borderTimer = 0.0f;
 
     AnimatedDistort _animatedDistort;

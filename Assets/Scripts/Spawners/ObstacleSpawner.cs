@@ -39,7 +39,12 @@ public class ObstacleSpawner : Spawner {
     protected override void Spawn() {
         int spawnIndex = GetSpawnIndex();
         Obstacle newObstacle = GameObject.Instantiate(_curObstacles[spawnIndex]);
-        float posX = Random.Range(-newObstacle.spawnOffsetX, newObstacle.spawnOffsetX);
+        float posX = 0;
+        if (newObstacle.spawnOffsetX > 0) {
+            posX = Random.Range(-newObstacle.spawnOffsetX, newObstacle.spawnOffsetX);
+        } else {
+            posX = Random.Range(newObstacle.spawnOffsetLeft, newObstacle.spawnOffsetRight);
+        }
         float posZ = transform.position.z + newObstacle.spawnOffsetZ;
         newObstacle.transform.position = new Vector3(posX, transform.position.y, posZ);
         _minSpawnDist = newObstacle.minSpawnDistance;
@@ -74,7 +79,7 @@ public class ObstacleSpawner : Spawner {
 
         if (_subDifficulty >= 10) {
             _mainDifficulty++;
-            if (_mainDifficulty > 3) {
+            if (_mainDifficulty > 1) {
                 _mainDifficulty = 4;
 
                 // At this point, new zone will be selected randomly
@@ -93,7 +98,8 @@ public class ObstacleSpawner : Spawner {
     }
 
     void LoadNextZone() {
-        int r = Random.Range(0, 3);
+        int r = Random.Range(0, 4);
+        r = 3;
 
         switch (r) {
             case 0: // Flower zone
@@ -104,6 +110,9 @@ public class ObstacleSpawner : Spawner {
                 break;
             case 2: // Basic Zone 4
                 _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone4");
+                break;
+            case 3:
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/VillageZone");
                 break;
         }
     }
