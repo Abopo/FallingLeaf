@@ -79,7 +79,7 @@ public class ObstacleSpawner : Spawner {
 
         if (_subDifficulty >= 10) {
             _mainDifficulty++;
-            if (_mainDifficulty > 1) {
+            if (_mainDifficulty > 3) {
                 _mainDifficulty = 4;
 
                 // At this point, new zone will be selected randomly
@@ -99,7 +99,6 @@ public class ObstacleSpawner : Spawner {
 
     void LoadNextZone() {
         int r = Random.Range(0, 4);
-        r = 3;
 
         switch (r) {
             case 0: // Flower zone

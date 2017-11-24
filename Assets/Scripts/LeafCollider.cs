@@ -28,6 +28,9 @@ public class LeafCollider : MonoBehaviour {
         if(PlayerPrefs.GetInt("ShieldUnlocked") == 1) {
             _shield = 1;
         }
+        if(PlayerPrefs.GetInt("SafeguardUnlocked") == 1) {
+            _shield = 2;
+        }
     }
 
     // Update is called once per frame

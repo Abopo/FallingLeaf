@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-enum SHOP_ITEMS { NOTHING = -1, WIND1 = 0, SHIELD, MAGNET };
+enum SHOP_ITEMS { NOTHING = -1, WIND1 = 0, SHIELD, ROTATE, MAGNET, GALE, SQUALL, SAFEGUARD };
 
 public class Store : MonoBehaviour {
     public Text coinText;
@@ -56,10 +56,30 @@ public class Store : MonoBehaviour {
                 PlayerPrefs.SetInt("ShieldUnlocked", 1);
                 UpdateBuyButton("ShieldUnlocked");
                 break;
+            case SHOP_ITEMS.ROTATE:
+                curCoins -= curItemCost;
+                PlayerPrefs.SetInt("RotationUnlocked", 1);
+                UpdateBuyButton("RotationUnlocked");
+                break;
             case SHOP_ITEMS.MAGNET:
                 curCoins -= curItemCost;
                 PlayerPrefs.SetInt("MagnetUnlocked", 1);
                 UpdateBuyButton("MagnetUnlocked");
+                break;
+            case SHOP_ITEMS.GALE:
+                curCoins -= curItemCost;
+                PlayerPrefs.SetInt("GaleforceUnlocked", 1);
+                UpdateBuyButton("GaleforceUnlocked");
+                break;
+            case SHOP_ITEMS.SQUALL:
+                curCoins -= curItemCost;
+                PlayerPrefs.SetInt("SquallUnlocked", 1);
+                UpdateBuyButton("SquallUnlocked");
+                break;
+            case SHOP_ITEMS.SAFEGUARD:
+                curCoins -= curItemCost;
+                PlayerPrefs.SetInt("SafeguardUnlocked", 1);
+                UpdateBuyButton("SafeguardUnlocked");
                 break;
         }
 
@@ -83,12 +103,44 @@ public class Store : MonoBehaviour {
         UpdateBuyButton("ShieldUnlocked");
     }
 
+    public void RotationSelected() {
+        itemName.text = "Rotation - $1000";
+        itemDescription.text = "Increase the speed the leaf rotates";
+        selectedItem = SHOP_ITEMS.ROTATE;
+        curItemCost = 1000;
+        UpdateBuyButton("RotationUnlocked");
+    }
+
     public void CoinMagnetSelected() {
-        itemName.text = "Coin Magnet - $2000";
+        itemName.text = "Coin Magnet - $1500";
         itemDescription.text = "Pull in coins from a distance";
         selectedItem = SHOP_ITEMS.MAGNET;
-        curItemCost = 2000;
+        curItemCost = 1500;
         UpdateBuyButton("MagnetUnlocked");
+    }
+
+    public void GaleforceSelected() {
+        itemName.text = "Galeforce - $2000";
+        itemDescription.text = "Increase the strength of your wind gusts";
+        selectedItem = SHOP_ITEMS.GALE;
+        curItemCost = 1500;
+        UpdateBuyButton("GaleforceUnlocked");
+    }
+
+    public void SquallSelected() {
+        itemName.text = "Squall - $2500";
+        itemDescription.text = "Maximize the amount of wind you can use";
+        selectedItem = SHOP_ITEMS.SQUALL;
+        curItemCost = 2500;
+        UpdateBuyButton("SquallUnlocked");
+    }
+
+    public void SafeguardSelected() {
+        itemName.text = "Safeguard - $3000";
+        itemDescription.text = "Take yet another extra hit before dying";
+        selectedItem = SHOP_ITEMS.SAFEGUARD;
+        curItemCost = 3000;
+        UpdateBuyButton("SafeguardUnlocked");
     }
 
     void UpdateBuyButton(string item) {

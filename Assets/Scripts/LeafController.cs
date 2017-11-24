@@ -22,6 +22,8 @@ public class LeafController : MonoBehaviour {
     float _maxMoveSpeedY = 100f;
     float _curMaxMoveSpeedY;
 
+    float rotationSpeed = 100f;
+
     float _windForce = 175f;
     float _windTime = 0.5f;
     float _windTimer = 0.6f;
@@ -70,6 +72,16 @@ public class LeafController : MonoBehaviour {
         if(PlayerPrefs.GetInt("MagnetUnlocked") == 1) {
             magnetCollider.enabled = true;
         }
+        if(PlayerPrefs.GetInt("RotationUnlocked") == 1) {
+            rotationSpeed = 150f;
+        }
+        if(PlayerPrefs.GetInt("GaleforceUnlocked") == 1) {
+            _windForce = 225f;
+        }
+        if(PlayerPrefs.GetInt("SquallUnlocked") == 1) {
+            windResourceMax = 1.6f;
+            windResource = 1.6f;
+        }
     }
 
     // Update is called once per frame
@@ -105,11 +117,11 @@ public class LeafController : MonoBehaviour {
     void CheckInput() {
         if (Input.GetKey(KeyCode.A)) {
             // rotate left
-            transform.Rotate(0f, 0f, 100 * Time.deltaTime);
+            transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D)) {
             // rotate right
-            transform.Rotate(0f, 0f, -100 * Time.deltaTime);
+            transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
         }
         if(Input.GetKey(KeyCode.Space) && windResource > _windTime) {
             // Wind burst

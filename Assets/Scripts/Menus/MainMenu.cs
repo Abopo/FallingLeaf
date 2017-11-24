@@ -10,12 +10,18 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        PlayerPrefs.SetInt("FirstTime", 0);
+
         if (PlayerPrefs.GetInt("FirstTime") == 0) {
             PlayerPrefs.SetInt("BestDistance", 0);
-            PlayerPrefs.SetInt("Coins", 1000);
-            PlayerPrefs.SetInt("ShieldUnlocked", 0);
+            PlayerPrefs.SetInt("Coins", 10000);
             PlayerPrefs.SetInt("UpdraftUnlocked", 0);
+            PlayerPrefs.SetInt("ShieldUnlocked", 0);
+            PlayerPrefs.SetInt("RotationUnlocked", 0);
             PlayerPrefs.SetInt("MagnetUnlocked", 0);
+            PlayerPrefs.SetInt("GaleforceUnlocked", 0);
+            PlayerPrefs.SetInt("SquallUnlocked", 0);
+            PlayerPrefs.SetInt("SafeguardUnlocked", 0);
 
             PlayerPrefs.SetInt("FirstTime", 1);
         }

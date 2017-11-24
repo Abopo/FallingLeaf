@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour {
     public float moveSpeed;
+    public bool turnAround;
 
     float velocity;
     float leftX;
@@ -23,6 +24,10 @@ public class Bird : MonoBehaviour {
         velocity = moveSpeed;
 
         modelTransform = transform.GetChild(0).transform;
+
+        if(Random.Range(0,2) == 0 || turnAround) {
+            TurnAround();
+        }
     }
 	
 	// Update is called once per frame
@@ -31,10 +36,13 @@ public class Bird : MonoBehaviour {
         // If we have reached the target point
         if((velocity > 0 && transform.position.x > rightX) ||
             (velocity < 0 && transform.position.x < leftX)) {
-            // Turn around
-            velocity = -velocity;
-            modelTransform.Rotate(0f, 180f, 0f);
+            TurnAround();
         }
+    }
+
+    void TurnAround() {
+        velocity = -velocity;
+        modelTransform.Rotate(0f, 180f, 0f);
     }
 
     private void OnDestroy() {

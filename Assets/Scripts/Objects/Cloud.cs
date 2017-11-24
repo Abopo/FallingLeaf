@@ -5,6 +5,9 @@ using UnityEngine;
 public class Cloud : MonoBehaviour {
     public float velX;
 
+    float _destroyTime = 240;
+    float _destroyTimer;
+
 	// Use this for initialization
 	void Start () {
         int rot = Random.Range(0, 2);
@@ -22,5 +25,10 @@ public class Cloud : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate(velX * Time.deltaTime, 0f, 0f, Space.World);
+
+        _destroyTimer += Time.deltaTime;
+        if(_destroyTimer >= _destroyTime) {
+            DestroyObject(this.gameObject);
+        }
 	}
 }
