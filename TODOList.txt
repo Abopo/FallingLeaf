@@ -12,3 +12,5 @@ Level Stuff
 Gameplay stuff
 - Finish implementing shop/items
 - Adjust timing for border branches*
+- Adjust horizontal deceleration to change with vertical orientation*
+- Maybe change wind power to be a hold to activate ability

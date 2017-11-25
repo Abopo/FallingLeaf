@@ -13,6 +13,7 @@ public class LeafController : MonoBehaviour {
     public Vector2 _velocity;
     // X
     float _moveAccelerationX = 80f;
+    float _baseMoveDecelerationX = 10f;
     float _moveDecelerationX = 10f;
     float _maxMoveSpeedX = 100f;
     float _curMaxMoveSpeedX;
@@ -163,6 +164,10 @@ public class LeafController : MonoBehaviour {
         // Y velocity
         dif = Vector3.Dot(right, transform.up);
         _curMaxMoveSpeedY = -_maxMoveSpeedY * Mathf.Abs(dif);
+
+        // Adjust moveDecelerationX based on vertical orientation
+        _moveDecelerationX = _baseMoveDecelerationX + (30 * Mathf.Abs(dif));
+
         // If we used a wind burst, override downward velocity
         if (_windTimer <= _windTime) {
             yVel = _velocity.y + (_windForce * Time.deltaTime);
