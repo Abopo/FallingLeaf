@@ -25,7 +25,7 @@ public class Store : MonoBehaviour {
         selectedItem = SHOP_ITEMS.NOTHING;
 
         curCoins = PlayerPrefs.GetInt("Coins");
-        coinText.text = "$ " + curCoins;
+        coinText.text = /*"$ " + */curCoins.ToString();
 	}
 	
 	// Update is called once per frame
@@ -84,7 +84,7 @@ public class Store : MonoBehaviour {
         }
 
         PlayerPrefs.SetInt("Coins", curCoins);
-        coinText.text = "$ " + curCoins;
+        coinText.text = /*"$ " + */curCoins.ToString();
     }
 
     public void WindBuff1Selected() {
@@ -113,7 +113,7 @@ public class Store : MonoBehaviour {
 
     public void CoinMagnetSelected() {
         itemName.text = "Vortex - $1500";
-        itemDescription.text = "Pull in coins from a distance";
+        itemDescription.text = "Pull in sap from a distance";
         selectedItem = SHOP_ITEMS.MAGNET;
         curItemCost = 1500;
         UpdateBuyButton("MagnetUnlocked");

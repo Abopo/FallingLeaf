@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour {
     void Start () {
         _lastYPos = transform.position.y;
 
-        coinsText.text = "$ " + PlayerPrefs.GetInt("Coins").ToString();
+        coinsText.text = /*"$ " + */PlayerPrefs.GetInt("Coins").ToString();
         _collectedCoins = PlayerPrefs.GetInt("Coins");
     }
 
@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour {
 
     public void EarnCoin() {
         _collectedCoins += 10;
-        coinsText.text = "$ " + _collectedCoins.ToString();
+        coinsText.text = /*"$ " + */_collectedCoins.ToString();
     }
 
     public void EndGame() {
