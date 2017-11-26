@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114265718283517372}
   - component: {fileID: 54367894704487552}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: Sap
   m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044718686266386}
-  m_LocalRotation: {x: -0.0062511186, y: -0.0062511195, z: 0.7070792, w: 0.7070792}
-  m_LocalPosition: {x: -17.18, y: 244, z: 40}
-  m_LocalScale: {x: 2.93761, y: 2.9376104, z: 0.2673013}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -42, y: 0.8, z: -65.8}
+  m_LocalScale: {x: 2.8918762, y: 2.891877, z: 2.891877}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -1.013, z: 90.00001}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!23 &23617924033004402
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -58,8 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 43e6a9210196b7c45876f9f71b796d40, type: 2}
-  - {fileID: 2100000, guid: 336d8f07e25bea546897fb9c9e5cbfa4, type: 2}
+  - {fileID: 2100000, guid: d50c366bdc76a1a468237072363838c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,7 +83,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044718686266386}
-  m_Mesh: {fileID: 4300000, guid: 9cbf2e9a0ae26ee40be0d665f92e4d23, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 16c61f12a7ab67448a3a1e2ca681fa4f, type: 3}
 --- !u!54 &54367894704487552
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -139,5 +138,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.5498945
+  m_Center: {x: 0, y: -4.075753e-15, z: 0.5598946}

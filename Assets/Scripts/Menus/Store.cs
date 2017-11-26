@@ -96,7 +96,7 @@ public class Store : MonoBehaviour {
     }
 
     public void LeafShieldSelected() {
-        itemName.text = "Leaf Shield - $1000";
+        itemName.text = "Leaf Guard - $1000";
         itemDescription.text = "Take an extra hit before dying";
         selectedItem = SHOP_ITEMS.SHIELD;
         curItemCost = 1000;
@@ -104,7 +104,7 @@ public class Store : MonoBehaviour {
     }
 
     public void RotationSelected() {
-        itemName.text = "Rotation - $1000";
+        itemName.text = "Whirligig - $1000";
         itemDescription.text = "Increase the speed the leaf rotates";
         selectedItem = SHOP_ITEMS.ROTATE;
         curItemCost = 1000;
@@ -112,7 +112,7 @@ public class Store : MonoBehaviour {
     }
 
     public void CoinMagnetSelected() {
-        itemName.text = "Coin Magnet - $1500";
+        itemName.text = "Vortex - $1500";
         itemDescription.text = "Pull in coins from a distance";
         selectedItem = SHOP_ITEMS.MAGNET;
         curItemCost = 1500;
@@ -155,5 +155,4 @@ public class Store : MonoBehaviour {
             buyButton.interactable = true;
         }
     }
-
 }

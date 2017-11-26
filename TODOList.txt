@@ -2,15 +2,19 @@ Simple TODO List for the trip
 
 Visual Stuff
 - Add more effects to the main menu*
-	- Wind
 - Make clouds in the background randomized*
-- Add whale to background
+- Add whale to background*
 
 Level Stuff
 - Make more zones
 
 Gameplay stuff
-- Finish implementing shop/items
+- Finish implementing shop/items*
 - Adjust timing for border branches*
 - Adjust horizontal deceleration to change with vertical orientation*
 - Maybe change wind power to be a hold to activate ability
+
+Itemnames
+- Leaf shield: Absorber, Leaf guard
+- Rotation: whirligig, vortex
+- Coin magnet: (coin) vortex

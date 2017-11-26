@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8d75eac85070e5d4a9d9b7b7bc85ceae, type: 2}
+  - {fileID: 2100000, guid: c70e9e7b3367e4345b970abe77ea8a4a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,6 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOffsetZ: 65
   spawnOffsetX: 60
+  spawnOffsetLeft: 0
+  spawnOffsetRight: 0
   spawnChance: 10
   spawnChanceChange: 0
   minSpawnDistance: 0
