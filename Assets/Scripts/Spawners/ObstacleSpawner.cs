@@ -108,17 +108,20 @@ public class ObstacleSpawner : Spawner {
                 _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BirdZone");
                 break;
             case 2: // Basic Zone 4
-                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone4");
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/VillageZone");
                 break;
             case 3:
-                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/VillageZone");
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone4");
+                break;
+            case 4:
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone5");
                 break;
         }
     }
 
     protected override float DecideNextSpawnDistance() {
         float nextSpawn;
-        nextSpawn = _minSpawnDist + (125 - (3 * _subDifficulty) + Random.Range(-25, 25));
+        nextSpawn = _minSpawnDist + (125 - (3*_subDifficulty) - (5*_mainDifficulty) + Random.Range(-25, 25));
         return nextSpawn;
     }
 

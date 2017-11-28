@@ -50,7 +50,7 @@ public class LeafController : MonoBehaviour {
     float maxSwipeTime = 0.5f;
 
     // These track how long the player is riding the border (will spawn a branch there if it's too long)
-    float _borderTime = 4.0f;
+    float _borderTime = 1.0f;
     float _borderTimer = 0.0f;
 
     AnimatedDistort _animatedDistort;
@@ -226,7 +226,7 @@ public class LeafController : MonoBehaviour {
     }
 
     void CheckPosition() {
-        if(transform.position.x > 55 || transform.position.x < -55) {
+        if(transform.position.x > 50 || transform.position.x < -50) {
             _borderTimer += Time.deltaTime;
             if(_borderTimer >= _borderTime) {
                 obstacleSpawner.SpawnBorderBranch(transform.position.x);
