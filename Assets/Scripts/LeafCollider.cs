@@ -26,10 +26,10 @@ public class LeafCollider : MonoBehaviour {
 
     void InitPowerUps() {
         if(PlayerPrefs.GetInt("ShieldUnlocked") == 1) {
-            _shield = 1;
+            _shield++;
         }
         if(PlayerPrefs.GetInt("SafeguardUnlocked") == 1) {
-            _shield = 2;
+            _shield++;
         }
     }
 

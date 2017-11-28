@@ -23,7 +23,7 @@ public class LeafController : MonoBehaviour {
     float _maxMoveSpeedY = 100f;
     float _curMaxMoveSpeedY;
 
-    float rotationSpeed = 100f;
+    float _rotationSpeed = 100f;
 
     float _windForce = 175f;
     float _windTime = 0.5f;
@@ -74,21 +74,21 @@ public class LeafController : MonoBehaviour {
 
     void InitPowerUps() {
         if(PlayerPrefs.GetInt("UpdraftUnlocked") == 1) {
-            windResourceMax = 1.1f;
-            windResource = 1.1f;
+            windResourceMax += 0.5f;
+            windResource = windResourceMax;
         }
         if(PlayerPrefs.GetInt("MagnetUnlocked") == 1) {
             magnetCollider.enabled = true;
         }
         if(PlayerPrefs.GetInt("RotationUnlocked") == 1) {
-            rotationSpeed = 150f;
+            _rotationSpeed = 145f;
         }
         if(PlayerPrefs.GetInt("GaleforceUnlocked") == 1) {
             _windForce = 225f;
         }
         if(PlayerPrefs.GetInt("SquallUnlocked") == 1) {
-            windResourceMax = 1.6f;
-            windResource = 1.6f;
+            windResourceMax += 0.5f;
+            windResource = windResourceMax;
         }
     }
 
@@ -125,11 +125,11 @@ public class LeafController : MonoBehaviour {
     void CheckInput() {
         if (Input.GetKey(KeyCode.A) || TouchingLeft()) {
             // rotate left
-            transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
+            transform.Rotate(0f, 0f, _rotationSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D) || TouchingRight()) {
             // rotate right
-            transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
+            transform.Rotate(0f, 0f, -_rotationSpeed * Time.deltaTime);
         }
         if((Input.GetKey(KeyCode.Space) || SwipedUp()) && windResource > _windTime) {
             // Wind burst

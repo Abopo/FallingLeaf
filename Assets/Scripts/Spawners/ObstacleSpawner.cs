@@ -8,6 +8,7 @@ public class ObstacleSpawner : Spawner {
     int _mainDifficulty;
     int _subDifficulty;
     float _tracker;
+    int _curZone;
 
     float _minSpawnDist; // used to decide the next spawn distance
 
@@ -21,6 +22,8 @@ public class ObstacleSpawner : Spawner {
 
         _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone1");
         _borderBranch = _curObstacles[0];
+
+        _curZone = -1;
 
         UpdateDifficulty();
         _spawnDistance = DecideNextSpawnDistance();
@@ -100,6 +103,12 @@ public class ObstacleSpawner : Spawner {
     void LoadNextZone() {
         int r = Random.Range(0, 4);
 
+        // Make sure the same zone doesn't happen twice in a row
+        while (r == _curZone) {
+            Random.Range(0, 4);
+        }
+
+        _curZone = r;
         switch (r) {
             case 0: // Flower zone
                 _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/FlowerZone");
@@ -121,7 +130,7 @@ public class ObstacleSpawner : Spawner {
 
     protected override float DecideNextSpawnDistance() {
         float nextSpawn;
-        nextSpawn = _minSpawnDist + (125 - (3*_subDifficulty) - (5*_mainDifficulty) + Random.Range(-25, 25));
+        nextSpawn = _minSpawnDist + (125 - (3*_subDifficulty) - (3*_mainDifficulty) + Random.Range(-25, 25));
         return nextSpawn;
     }
 
