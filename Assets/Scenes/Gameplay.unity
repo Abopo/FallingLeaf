@@ -244,7 +244,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: 1
+    m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -253,7 +253,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -343,8 +343,18 @@ Prefab:
       objectReference: {fileID: 592329318}
     - target: {fileID: 20668121312064362, guid: b866eede51afc5c4fab71e15926a9720,
         type: 2}
-      propertyPath: m_ClearFlags
-      value: 4
+      propertyPath: m_RenderingPath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20668121312064362, guid: b866eede51afc5c4fab71e15926a9720,
+        type: 2}
+      propertyPath: m_AllowMSAA
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20668121312064362, guid: b866eede51afc5c4fab71e15926a9720,
+        type: 2}
+      propertyPath: near clip plane
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b866eede51afc5c4fab71e15926a9720, type: 2}
@@ -1650,19 +1660,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4581180929970412, guid: 5170a5ac58c7223439b7aec1629f1a0f, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.0069862637
+      value: -0.0069374554
       objectReference: {fileID: 0}
     - target: {fileID: 4581180929970412, guid: 5170a5ac58c7223439b7aec1629f1a0f, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.008123029
+      value: 0.008167898
       objectReference: {fileID: 0}
     - target: {fileID: 4581180929970412, guid: 5170a5ac58c7223439b7aec1629f1a0f, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.0059575667
+      value: 0.00005666768
       objectReference: {fileID: 0}
     - target: {fileID: 4581180929970412, guid: 5170a5ac58c7223439b7aec1629f1a0f, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9999249
+      value: 0.9999426
       objectReference: {fileID: 0}
     - target: {fileID: 4581180929970412, guid: 5170a5ac58c7223439b7aec1629f1a0f, type: 2}
       propertyPath: m_RootOrder
@@ -1711,6 +1721,35 @@ Prefab:
       propertyPath: obstacleSpawner
       value: 
       objectReference: {fileID: 551501548}
+    - target: {fileID: 198557366577301456, guid: 5170a5ac58c7223439b7aec1629f1a0f,
+        type: 2}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198557366577301456, guid: 5170a5ac58c7223439b7aec1629f1a0f,
+        type: 2}
+      propertyPath: randomSeed
+      value: 771919536
+      objectReference: {fileID: 0}
+    - target: {fileID: 114199330048863456, guid: 5170a5ac58c7223439b7aec1629f1a0f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114767086866235520, guid: 5170a5ac58c7223439b7aec1629f1a0f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114767086866235520, guid: 5170a5ac58c7223439b7aec1629f1a0f,
+        type: 2}
+      propertyPath: calculateInGPU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581180929970412, guid: 5170a5ac58c7223439b7aec1629f1a0f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5170a5ac58c7223439b7aec1629f1a0f, type: 2}
   m_IsPrefabParent: 0
@@ -1792,7 +1831,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1844,12 +1883,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114570881609616994, guid: 086f42bde3d941e4289e297af66d7022,
+    - target: {fileID: 114265338444270600, guid: 086f42bde3d941e4289e297af66d7022,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 989930787}
-    - target: {fileID: 114265338444270600, guid: 086f42bde3d941e4289e297af66d7022,
+    - target: {fileID: 114570881609616994, guid: 086f42bde3d941e4289e297af66d7022,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

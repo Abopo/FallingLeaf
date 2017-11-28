@@ -242,7 +242,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 262f6b9f69c4788449e6c7edf2f9df08, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4a47afdb454903b40996512933e3fe50, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 198557366577301456}
-  _coin: {fileID: 8300000, guid: 262f6b9f69c4788449e6c7edf2f9df08, type: 3}
+  _coin: {fileID: 8300000, guid: 4a47afdb454903b40996512933e3fe50, type: 3}
   _death: {fileID: 8300000, guid: 3eb597af3b7782749b50409dcfa1dd1f, type: 3}
 --- !u!114 &114767086866235520
 MonoBehaviour:
@@ -674,8 +674,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  obstacleSpawner: {fileID: 0}
   model: {fileID: 23831275223046992}
   gameEffects: {fileID: 0}
+  magnetCollider: {fileID: 0}
   _velocity: {x: 0, y: 0}
   windResource: 0.51
   windResourceMax: 0.51

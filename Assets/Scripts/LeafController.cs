@@ -42,6 +42,13 @@ public class LeafController : MonoBehaviour {
         get { return _hasDied; }
     }
 
+    float startTime;
+    Vector2 startPos;
+    bool couldBeSwipe;
+    float comfortZone = 300;
+    float minSwipeDist = 75;
+    float maxSwipeTime = 0.5f;
+
     // These track how long the player is riding the border (will spawn a branch there if it's too long)
     float _borderTime = 4.0f;
     float _borderTimer = 0.0f;
@@ -116,15 +123,15 @@ public class LeafController : MonoBehaviour {
     }
 
     void CheckInput() {
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.A) || TouchingLeft()) {
             // rotate left
             transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.D) || TouchingRight()) {
             // rotate right
             transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
         }
-        if(Input.GetKey(KeyCode.Space) && windResource > _windTime) {
+        if((Input.GetKey(KeyCode.Space) || SwipedUp()) && windResource > _windTime) {
             // Wind burst
             _windTimer = 0f;
             gameEffects.WindBurst();
@@ -226,6 +233,62 @@ public class LeafController : MonoBehaviour {
                 _borderTimer = 0f;
             }
         }
+    }
+
+    // Touch input stuff
+    bool TouchingLeft() {
+        if (Input.touchCount > 0 && Input.GetTouch(0).position.x < Screen.width / 2) {
+            return true;
+        }
+
+        return false;
+    }
+
+    bool TouchingRight() {
+        if (Input.touchCount > 0 && Input.GetTouch(0).position.x > Screen.width / 2) {
+            return true;
+        }
+
+        return false;
+    }
+
+    bool SwipedUp() {
+        if(Input.touchCount > 0) {
+            Touch touch = Input.touches[0];
+
+            switch(touch.phase) {
+                case TouchPhase.Began:
+                    couldBeSwipe = true;
+                    startPos = touch.position;
+                    startTime = Time.time;
+
+                    break;
+                case TouchPhase.Moved:
+                    if(Mathf.Abs(touch.position.x - startPos.x) > comfortZone) {
+                        couldBeSwipe = false;
+                    }
+                    break;
+                case TouchPhase.Stationary:
+                    //couldBeSwipe = false;
+                    break;
+                case TouchPhase.Ended:
+                    float swipeTime = Time.time - startTime;
+                    float swipeDist = (touch.position - startPos).magnitude;
+
+                    if (couldBeSwipe && swipeTime < maxSwipeTime && swipeDist > minSwipeDist) {
+                        // it's a swipe!
+                        float swipeDir = Mathf.Sign(touch.position.y - startPos.y);
+
+                        // If the swipe was upward
+                        if(swipeDir > 0) {
+                            return true;
+                        }
+                    }
+                    break;
+            }
+        }
+
+        return false;
     }
 
     public void Hit() {

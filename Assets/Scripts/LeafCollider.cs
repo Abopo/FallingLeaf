@@ -46,9 +46,10 @@ public class LeafCollider : MonoBehaviour {
                 _leafController.Hit();
             } else {
                 _levelManager.EndGame();
-                deathParticles.Play();
                 _leafController.Die();
             }
+
+            deathParticles.Play();
 
             // Play death sound
             _audioSource.volume = 1f;
