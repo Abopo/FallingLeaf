@@ -14,8 +14,8 @@ public class DayNightCycle : MonoBehaviour {
     Light sunlight;
 
     // Day settings
-    Color dayLightColor = new Color32(249, 187, 17, 255);
-    float dayLightIntensity = 0.75f;
+    Color dayLightColor = new Color32(255, 253, 227, 255);
+    float dayLightIntensity = 1.0f;
     Vector3 dayRotation = new Vector3(1.6f, 5f, 14f);
     Color dayFogColor = new Color32(247, 237, 248, 255);
     Material daySkybox;
@@ -23,7 +23,7 @@ public class DayNightCycle : MonoBehaviour {
 
     // Dusk settings
     Color duskLightColor = new Color32(249, 187, 17, 255);
-    float duskLightIntensity = 1.0f;
+    float duskLightIntensity = 0.8f;
     Vector3 duskRotation = new Vector3(1.6f, 5f, 14f);
     Color duskFogColor = new Color32(255, 234, 144, 255);
     Material duskSkybox;

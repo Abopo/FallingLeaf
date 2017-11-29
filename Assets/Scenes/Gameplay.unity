@@ -288,8 +288,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.97794116, g: 0.7329297, b: 0.0647167, a: 1}
-  m_Intensity: 0.5
+  m_Color: {r: 0.9705882, g: 0.9474555, b: 0.6351643, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2284,7 +2284,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114265338444270600, guid: 086f42bde3d941e4289e297af66d7022,
+    - target: {fileID: 114836978196482974, guid: 086f42bde3d941e4289e297af66d7022,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2294,15 +2294,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 989930787}
-    - target: {fileID: 114836978196482974, guid: 086f42bde3d941e4289e297af66d7022,
+    - target: {fileID: 114265338444270600, guid: 086f42bde3d941e4289e297af66d7022,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 989930787}
-    - target: {fileID: 1346554113692544, guid: 086f42bde3d941e4289e297af66d7022, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 086f42bde3d941e4289e297af66d7022, type: 2}
   m_IsPrefabParent: 0
