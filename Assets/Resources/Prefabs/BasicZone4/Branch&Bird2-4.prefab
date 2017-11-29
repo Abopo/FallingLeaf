@@ -457,7 +457,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1432130313586444}
   m_LocalRotation: {x: -0, y: -0, z: -0.7057089, w: 0.708502}
-  m_LocalPosition: {x: -32.2, y: 1.0136719, z: 54.31125}
+  m_LocalPosition: {x: -32.2, y: 1.0136719, z: 38.81125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4482779059910656}
@@ -471,7 +471,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383852447436930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32, y: 0, z: 23.381248}
+  m_LocalPosition: {x: 32, y: 0, z: -0.2}
   m_LocalScale: {x: 7.7561197, y: 7.7561197, z: 7.7561197}
   m_Children:
   - {fileID: 4222455424537166}
@@ -512,7 +512,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1288863622597784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.4, y: -104.71367, z: -79.546875}
+  m_LocalPosition: {x: 12.3, y: 459.8806, z: 33.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4415034281747628}
@@ -780,9 +780,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOffsetZ: 65
   spawnOffsetX: 60
+  spawnOffsetLeft: 0
+  spawnOffsetRight: 0
   spawnChance: 10
   spawnChanceChange: -1
   minSpawnDistance: 0
+  spawnDistanceOffset: 0
 --- !u!114 &114703385709364224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -794,11 +797,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85375be5250d80247a9b323f6b4a8bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOffsetZ: 25
+  spawnOffsetZ: 30
   spawnOffsetX: 20
+  spawnOffsetLeft: 0
+  spawnOffsetRight: 0
   spawnChance: 10
   spawnChanceChange: 0
   minSpawnDistance: 0
+  spawnDistanceOffset: 0
 --- !u!114 &114938904974787682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -811,6 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
+  turnAround: 0
 --- !u!135 &135127774030808710
 SphereCollider:
   m_ObjectHideFlags: 1

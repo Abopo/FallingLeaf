@@ -509,7 +509,7 @@ MonoBehaviour:
   spawnOffsetRight: 0
   spawnChance: 15
   spawnChanceChange: 1
-  minSpawnDistance: 0
+  minSpawnDistance: 20
 --- !u!135 &135175729991479058
 SphereCollider:
   m_ObjectHideFlags: 1

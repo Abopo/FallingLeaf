@@ -9,6 +9,7 @@ public class LeafController : MonoBehaviour {
     public MeshRenderer model;
     public GameEffects gameEffects;
     public SphereCollider magnetCollider;
+    public Tutorial tutorials;
 
     public Vector2 _velocity;
     // X
@@ -230,8 +231,10 @@ public class LeafController : MonoBehaviour {
             _borderTimer += Time.deltaTime;
             if(_borderTimer >= _borderTime) {
                 obstacleSpawner.SpawnBorderBranch(transform.position.x);
-                _borderTimer = 0f;
+                _borderTimer = -2f;
             }
+        } else {
+            _borderTime = 0f;
         }
     }
 

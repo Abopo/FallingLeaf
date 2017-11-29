@@ -11,6 +11,7 @@ public class ObstacleSpawner : Spawner {
     int _curZone;
 
     float _minSpawnDist; // used to decide the next spawn distance
+    float _spawnDistOffset;
 
     Obstacle _borderBranch; // spawned on the borders of the game to prevent players from staying there
 
@@ -51,6 +52,7 @@ public class ObstacleSpawner : Spawner {
         float posZ = transform.position.z + newObstacle.spawnOffsetZ;
         newObstacle.transform.position = new Vector3(posX, transform.position.y, posZ);
         _minSpawnDist = newObstacle.minSpawnDistance;
+        _spawnDistOffset = newObstacle.spawnDistanceOffset;
     }
 
     int GetSpawnIndex() {
@@ -82,7 +84,7 @@ public class ObstacleSpawner : Spawner {
 
         if (_subDifficulty >= 10) {
             _mainDifficulty++;
-            if (_mainDifficulty > 3) {
+            if (_mainDifficulty > 1) {
                 _mainDifficulty = 4;
 
                 // At this point, new zone will be selected randomly
@@ -105,8 +107,10 @@ public class ObstacleSpawner : Spawner {
 
         // Make sure the same zone doesn't happen twice in a row
         while (r == _curZone) {
-            Random.Range(0, 4);
+            r = Random.Range(0, 4);
         }
+
+        r = 3;
 
         _curZone = r;
         switch (r) {
@@ -130,7 +134,10 @@ public class ObstacleSpawner : Spawner {
 
     protected override float DecideNextSpawnDistance() {
         float nextSpawn;
-        nextSpawn = _minSpawnDist + (125 - (3*_subDifficulty) - (3*_mainDifficulty) + Random.Range(-25, 25));
+        nextSpawn = _spawnDistOffset + (125 - (3*_subDifficulty) - (3*_mainDifficulty) + Random.Range(-20, 20));
+        if(nextSpawn < _minSpawnDist) {
+            nextSpawn = _minSpawnDist + Random.Range(0, 20);
+        }
         return nextSpawn;
     }
 

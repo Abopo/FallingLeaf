@@ -18,11 +18,18 @@ public class CloudSpawner : Spawner {
         whaleObj = Resources.Load<GameObject>("Prefabs/Background/Whale");
 
         if (backgroundObjects == null) {
-            int r = Random.Range(0, 2);
-            if (r == 0) {
-                backgroundObjects = Resources.LoadAll<GameObject>("Prefabs/Background/BubbleClouds");
-            } else {
-                backgroundObjects = Resources.LoadAll<GameObject>("Prefabs/Background/FlatClouds");
+            int r = Random.Range(0, 3);
+
+            switch (r) {
+                case 0:
+                    backgroundObjects = Resources.LoadAll<GameObject>("Prefabs/Background/BubbleClouds");
+                    break;
+                case 1:
+                    backgroundObjects = Resources.LoadAll<GameObject>("Prefabs/Background/FlatClouds");
+                    break;
+                case 2:
+                    backgroundObjects = Resources.LoadAll<GameObject>("Prefabs/Background/TwistyClouds");
+                    break;
             }
         }
     }

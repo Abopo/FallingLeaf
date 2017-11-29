@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 4747838589535902}
   - component: {fileID: 95121317627072062}
   - component: {fileID: 114305005548096886}
+  - component: {fileID: 65287369298257978}
   m_Layer: 0
   m_Name: Cloud2
   m_TagString: Untagged
@@ -741,6 +742,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151602519943166}
   m_Mesh: {fileID: 4300010, guid: 950304ff1cdd3994f965f39850e09afd, type: 3}
+--- !u!65 &65287369298257978
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532708397314546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95121317627072062
 Animator:
   serializedVersion: 3

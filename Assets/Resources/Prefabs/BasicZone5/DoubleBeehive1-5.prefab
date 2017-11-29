@@ -2809,7 +2809,7 @@ MonoBehaviour:
   spawnOffsetRight: 0
   spawnChance: 3
   spawnChanceChange: 0
-  minSpawnDistance: 0
+  minSpawnDistance: 30
 --- !u!114 &114582817669601864
 MonoBehaviour:
   m_ObjectHideFlags: 1

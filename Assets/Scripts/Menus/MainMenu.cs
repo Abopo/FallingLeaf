@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        PlayerPrefs.SetInt("FirstTime", 0);
+        //PlayerPrefs.SetInt("FirstTime", 0);
 
         if (PlayerPrefs.GetInt("FirstTime") == 0) {
             PlayerPrefs.SetInt("BestDistance", 0);

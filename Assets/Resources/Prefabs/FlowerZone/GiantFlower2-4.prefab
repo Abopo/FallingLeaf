@@ -143,4 +143,4 @@ MonoBehaviour:
   spawnOffsetRight: 0
   spawnChance: 20
   spawnChanceChange: 0
-  minSpawnDistance: 55
+  minSpawnDistance: 45

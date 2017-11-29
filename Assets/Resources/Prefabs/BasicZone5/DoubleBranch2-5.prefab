@@ -810,7 +810,7 @@ MonoBehaviour:
   spawnOffsetRight: 0
   spawnChance: 15
   spawnChanceChange: 0
-  minSpawnDistance: 0
+  minSpawnDistance: 20
 --- !u!136 &136469151197830996
 CapsuleCollider:
   m_ObjectHideFlags: 1

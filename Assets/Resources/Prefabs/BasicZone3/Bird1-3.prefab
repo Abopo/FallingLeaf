@@ -648,6 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
+  turnAround: 0
 --- !u!114 &114802127480275362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -661,9 +662,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOffsetZ: 30
   spawnOffsetX: 35
+  spawnOffsetLeft: 0
+  spawnOffsetRight: 0
   spawnChance: 15
   spawnChanceChange: 2
-  minSpawnDistance: 0
+  minSpawnDistance: 10
 --- !u!137 &137500258493277458
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -31,4 +31,10 @@ public class Cloud : MonoBehaviour {
             DestroyObject(this.gameObject);
         }
 	}
+
+    private void OnTriggerEnter(Collider collision) {
+        if (collision.tag == "Obstacle Death Plane") {
+            DestroyObject(this.gameObject);
+        }
+    }
 }

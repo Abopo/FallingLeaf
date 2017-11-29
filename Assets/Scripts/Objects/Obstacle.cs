@@ -10,6 +10,7 @@ public class Obstacle : MonoBehaviour {
     public int spawnChance;
     public int spawnChanceChange;
     public int minSpawnDistance;
+    public int spawnDistanceOffset;
 
 	// Use this for initialization
 	void Start () {

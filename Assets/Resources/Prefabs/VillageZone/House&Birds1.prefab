@@ -9199,7 +9199,7 @@ MonoBehaviour:
   spawnOffsetRight: 35
   spawnChance: 10
   spawnChanceChange: 0
-  minSpawnDistance: 60
+  minSpawnDistance: 150
 --- !u!114 &114533534544983392
 MonoBehaviour:
   m_ObjectHideFlags: 1
