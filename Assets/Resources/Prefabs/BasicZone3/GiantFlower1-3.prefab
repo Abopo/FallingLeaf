@@ -53,7 +53,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1289332219196316}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -139,6 +139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOffsetZ: 30
   spawnOffsetX: 45
+  spawnOffsetLeft: 0
+  spawnOffsetRight: 0
   spawnChance: 1
   spawnChanceChange: 0
   minSpawnDistance: 60
+  spawnDistanceOffset: 0

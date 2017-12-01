@@ -40,7 +40,7 @@ public class CloudSpawner : Spawner {
     }
 
     protected override void Spawn() {
-        if(theWhale == null && (Random.Range(0, 100) == 0 || Input.GetKey(KeyCode.W))) {
+        if(theWhale == null && Random.Range(0, 150) == 21) {
             SpawnWhale();
         }
 
@@ -75,5 +75,9 @@ public class CloudSpawner : Spawner {
             posX = transform.position.x + (700 * (zOffset / 1000)) ;
         }
         theWhale.transform.position = new Vector3(posX, transform.position.y, posZ);
+    }
+
+    private void OnDestroy() {
+        backgroundObjects = null;
     }
 }

@@ -46,12 +46,12 @@ public class Tutorial : MonoBehaviour {
             }
 
             if (tutorialIndex == 0 && Time.timeScale == 0 && 
-                (Input.GetKey(KeyCode.A) || TouchingLeft() || Input.GetKey(KeyCode.D) || TouchingRight())) {
+                (Input.GetKeyDown(KeyCode.A) || TouchedLeft() || Input.GetKeyDown(KeyCode.D) || TouchedRight())) {
                 // rotate left
                 HideRotateText();
             }
             if(tutorialIndex == 1 && Time.timeScale == 0 &&
-                (Input.GetKey(KeyCode.Space) || SwipedUp())) {
+                (Input.GetKeyDown(KeyCode.Space) || SwipedUp())) {
                 HideWindText();
             }
         }
@@ -87,16 +87,16 @@ public class Tutorial : MonoBehaviour {
     }
 
     // Touch input stuff
-    bool TouchingLeft() {
-        if (Input.touchCount > 0 && Input.GetTouch(0).position.x < Screen.width / 2) {
+    bool TouchedLeft() {
+        if (Input.touchCount > 0 && Input.GetTouch(0).position.x < Screen.width / 2 && Input.GetTouch(0).phase == TouchPhase.Began) {
             return true;
         }
 
         return false;
     }
 
-    bool TouchingRight() {
-        if (Input.touchCount > 0 && Input.GetTouch(0).position.x > Screen.width / 2) {
+    bool TouchedRight() {
+        if (Input.touchCount > 0 && Input.GetTouch(0).position.x > Screen.width / 2 && Input.GetTouch(0).phase == TouchPhase.Began) {
             return true;
         }
 

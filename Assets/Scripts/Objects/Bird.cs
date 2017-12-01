@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bird : MonoBehaviour {
     public float moveSpeed;
     public bool turnAround;
+    public bool fullScreen;
 
     float velocity;
     float leftX;
@@ -16,10 +17,15 @@ public class Bird : MonoBehaviour {
 	void Start () {
         // Randomly decide stats
         moveSpeed = Random.Range(20f, 30f);
-        
-        float offset = Random.Range(20f, 40f);
-        leftX = transform.position.x - offset;
-        rightX = transform.position.x + offset;
+
+        if (fullScreen) {
+            leftX = -60f;
+            rightX = 60f;
+        } else {
+            float offset = Random.Range(20f, 40f);
+            leftX = transform.position.x - offset;
+            rightX = transform.position.x + offset;
+        }
 
         velocity = moveSpeed;
 

@@ -26,11 +26,18 @@ public class LeafController : MonoBehaviour {
 
     float _rotationSpeed = 100f;
 
+    // Wind ability
     float _windForce = 175f;
     float _windTime = 0.5f;
     float _windTimer = 0.6f;
     public float windResource = 0.51f;
     public float windResourceMax = 0.51f;
+
+    // Wind obstacle
+    float _outsideForce = 0f;
+    public float OutsideForce {
+        set { _outsideForce = value; }
+    }
 
     // Direction vectors
     Vector3 up = new Vector3(0f, 1f, 0f);
@@ -42,6 +49,7 @@ public class LeafController : MonoBehaviour {
     public bool HasDied {
         get { return _hasDied; }
     }
+
 
     float startTime;
     Vector2 startPos;
@@ -105,7 +113,7 @@ public class LeafController : MonoBehaviour {
 
         DetermineVelocity();
 
-        transform.Translate(_velocity.x * Time.deltaTime, _velocity.y * Time.deltaTime, 0f, Space.World);
+        transform.Translate((_velocity.x + _outsideForce) * Time.deltaTime, _velocity.y * Time.deltaTime, 0f, Space.World);
 
         StayInBounds();
         CheckPosition();
@@ -199,7 +207,11 @@ public class LeafController : MonoBehaviour {
             }
         }
 
+        //xVel += _outsideForce /* * Time.deltaTime*/;
+
         _velocity = new Vector2(xVel, yVel);
+
+        //_outsideForce = 0;
     }
 
     void AnimateDistortion(float dif) {

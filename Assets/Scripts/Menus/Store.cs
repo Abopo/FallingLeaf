@@ -88,58 +88,58 @@ public class Store : MonoBehaviour {
     }
 
     public void WindBuff1Selected() {
-        itemName.text = "Updraft - $500";
+        itemName.text = "Updraft - $1000";
         itemDescription.text = "Increase the amount of wind you can use";
         selectedItem = SHOP_ITEMS.WIND1;
-        curItemCost = 500;
+        curItemCost = 1000;
         UpdateBuyButton("UpdraftUnlocked");
     }
 
     public void LeafShieldSelected() {
-        itemName.text = "Leaf Guard - $1000";
+        itemName.text = "Leaf Guard - $2000";
         itemDescription.text = "Take an extra hit before dying";
         selectedItem = SHOP_ITEMS.SHIELD;
-        curItemCost = 1000;
+        curItemCost = 2000;
         UpdateBuyButton("ShieldUnlocked");
     }
 
     public void RotationSelected() {
-        itemName.text = "Whirligig - $1000";
+        itemName.text = "Whirligig - $2000";
         itemDescription.text = "Increase the speed the leaf rotates";
         selectedItem = SHOP_ITEMS.ROTATE;
-        curItemCost = 1000;
+        curItemCost = 2000;
         UpdateBuyButton("RotationUnlocked");
     }
 
     public void CoinMagnetSelected() {
-        itemName.text = "Vortex - $1500";
+        itemName.text = "Vortex - $3000";
         itemDescription.text = "Pull in sap from a distance";
         selectedItem = SHOP_ITEMS.MAGNET;
-        curItemCost = 1500;
+        curItemCost = 3000;
         UpdateBuyButton("MagnetUnlocked");
     }
 
     public void GaleforceSelected() {
-        itemName.text = "Galeforce - $2000";
+        itemName.text = "Galeforce - $3500";
         itemDescription.text = "Increase the strength of your wind gusts";
         selectedItem = SHOP_ITEMS.GALE;
-        curItemCost = 1500;
+        curItemCost = 3500;
         UpdateBuyButton("GaleforceUnlocked");
     }
 
     public void SquallSelected() {
-        itemName.text = "Squall - $2500";
+        itemName.text = "Squall - $4000";
         itemDescription.text = "Maximize the amount of wind you can use";
         selectedItem = SHOP_ITEMS.SQUALL;
-        curItemCost = 2500;
+        curItemCost = 4000;
         UpdateBuyButton("SquallUnlocked");
     }
 
     public void SafeguardSelected() {
-        itemName.text = "Safeguard - $3000";
+        itemName.text = "Safeguard - $4000";
         itemDescription.text = "Take yet another extra hit before dying";
         selectedItem = SHOP_ITEMS.SAFEGUARD;
-        curItemCost = 3000;
+        curItemCost = 4000;
         UpdateBuyButton("SafeguardUnlocked");
     }
 

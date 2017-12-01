@@ -251,7 +251,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1861869137309594}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -315,7 +315,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1286954293081966}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -347,7 +347,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1928297225963778}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -532,6 +532,7 @@ MonoBehaviour:
   spawnChance: 10
   spawnChanceChange: 0
   minSpawnDistance: 0
+  spawnDistanceOffset: 0
 --- !u!114 &114310554202053652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -550,6 +551,7 @@ MonoBehaviour:
   spawnChance: 3
   spawnChanceChange: 0
   minSpawnDistance: 50
+  spawnDistanceOffset: 0
 --- !u!114 &114319836200655592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,6 +594,7 @@ MonoBehaviour:
   spawnChance: 10
   spawnChanceChange: 0
   minSpawnDistance: 0
+  spawnDistanceOffset: 0
 --- !u!135 &135290579478522944
 SphereCollider:
   m_ObjectHideFlags: 1

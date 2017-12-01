@@ -32,7 +32,7 @@ public class DayNightCycle : MonoBehaviour {
     // Night settings
     Color nightLightColor = new Color32(7, 50, 140, 255);
     float nightLightIntensity = 2.0f;
-    Vector3 nightRotation = new Vector3(65f, 30f, 30f);
+    Vector3 nightRotation = new Vector3(45f, 18f, 15f);
     Color nightsFogColor = new Color32(50, 45, 170, 255);
     Material nightSkybox;
     Vector3 nightSkyboxRotation = new Vector3(-35f, -5f, 2f);

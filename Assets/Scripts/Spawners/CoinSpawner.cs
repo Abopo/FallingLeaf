@@ -5,6 +5,8 @@ using UnityEngine;
 public class CoinSpawner : Spawner {
     public GameObject coinObj;
 
+    int _maxSpawnDistance = 250;
+
     // Use this for initialization
     protected override void Start () {
         base.Update();
@@ -24,7 +26,9 @@ public class CoinSpawner : Spawner {
 
     protected override float DecideNextSpawnDistance() {
         float nextSpawn;
-        nextSpawn = Random.Range(75f, 150f);
+        nextSpawn = Random.Range(_maxSpawnDistance - 50, _maxSpawnDistance);
+        _maxSpawnDistance--;
+
         return nextSpawn;
     }
 }

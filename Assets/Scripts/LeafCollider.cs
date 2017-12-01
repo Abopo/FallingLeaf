@@ -63,4 +63,11 @@ public class LeafCollider : MonoBehaviour {
             _audioSource.Play();
         }
     }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.tag == "Wind") {
+            // Push leaf in direction of wind
+            _leafController.OutsideForce = other.GetComponent<Wind>().windForce;
+        }
+    }
 }

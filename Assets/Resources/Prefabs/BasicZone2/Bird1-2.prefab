@@ -576,7 +576,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1688754249846924}
   m_Enabled: 0
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -647,8 +647,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c243841f5ceb2f48adec0f032febbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 20
   turnAround: 0
+  fullScreen: 1
 --- !u!114 &114802127480275362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -667,6 +668,7 @@ MonoBehaviour:
   spawnChance: 5
   spawnChanceChange: 0
   minSpawnDistance: 10
+  spawnDistanceOffset: 0
 --- !u!137 &137500258493277458
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

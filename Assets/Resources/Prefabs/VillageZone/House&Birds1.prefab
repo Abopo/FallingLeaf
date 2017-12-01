@@ -4606,7 +4606,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1944447428249380}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -4894,7 +4894,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1992871057414170}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5822,7 +5822,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1998950568639582}
   m_Enabled: 0
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6110,7 +6110,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1610438714663074}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6270,7 +6270,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1968678738290574}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6526,7 +6526,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1307729124399496}
   m_Enabled: 0
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -7198,7 +7198,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1519298855254840}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -7678,7 +7678,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1951715696104922}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -9127,6 +9127,7 @@ MonoBehaviour:
   spawnChance: 15
   spawnChanceChange: 2
   minSpawnDistance: 0
+  spawnDistanceOffset: 0
 --- !u!114 &114247601412627008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9182,6 +9183,7 @@ MonoBehaviour:
   spawnChance: 15
   spawnChanceChange: 2
   minSpawnDistance: 0
+  spawnDistanceOffset: 0
 --- !u!114 &114525266617411570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9200,6 +9202,7 @@ MonoBehaviour:
   spawnChance: 10
   spawnChanceChange: 0
   minSpawnDistance: 150
+  spawnDistanceOffset: 0
 --- !u!114 &114533534544983392
 MonoBehaviour:
   m_ObjectHideFlags: 1

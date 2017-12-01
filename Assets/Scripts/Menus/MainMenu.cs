@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour {
 
         if (PlayerPrefs.GetInt("FirstTime") == 0) {
             PlayerPrefs.SetInt("BestDistance", 0);
-            PlayerPrefs.SetInt("Coins", 10000);
+            PlayerPrefs.SetInt("Coins", 0);
             PlayerPrefs.SetInt("UpdraftUnlocked", 0);
             PlayerPrefs.SetInt("ShieldUnlocked", 0);
             PlayerPrefs.SetInt("RotationUnlocked", 0);
@@ -45,8 +45,23 @@ public class MainMenu : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
-	}
+		if(Input.GetKeyDown(KeyCode.P)) {
+            // clear the preferences
+            PlayerPrefs.SetInt("BestDistance", 0);
+            PlayerPrefs.SetInt("Coins", 0);
+            PlayerPrefs.SetInt("UpdraftUnlocked", 0);
+            PlayerPrefs.SetInt("ShieldUnlocked", 0);
+            PlayerPrefs.SetInt("RotationUnlocked", 0);
+            PlayerPrefs.SetInt("MagnetUnlocked", 0);
+            PlayerPrefs.SetInt("GaleforceUnlocked", 0);
+            PlayerPrefs.SetInt("SquallUnlocked", 0);
+            PlayerPrefs.SetInt("SafeguardUnlocked", 0);
+
+            PlayerPrefs.SetInt("FirstTime", 1);
+        }
+
+        distanceRecord.text = "Best: " + PlayerPrefs.GetInt("BestDistance").ToString() + "m";
+    }
 
     public void LoadGameplay() {
         SceneManager.LoadScene("Gameplay");
