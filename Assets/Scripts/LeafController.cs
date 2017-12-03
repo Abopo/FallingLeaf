@@ -120,6 +120,8 @@ public class LeafController : MonoBehaviour {
 
         // Move camera along
         mainCamera.position = new Vector3(mainCamera.position.x, transform.position.y-15f, mainCamera.position.z);
+
+        _outsideForce = 0;
     }
 
     void UpdateWind() {
@@ -211,7 +213,6 @@ public class LeafController : MonoBehaviour {
 
         _velocity = new Vector2(xVel, yVel);
 
-        //_outsideForce = 0;
     }
 
     void AnimateDistortion(float dif) {
