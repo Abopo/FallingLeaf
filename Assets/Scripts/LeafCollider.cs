@@ -70,4 +70,10 @@ public class LeafCollider : MonoBehaviour {
             _leafController.OutsideForce = other.GetComponent<Wind>().windForce;
         }
     }
+
+    private void OnTriggerExit(Collider other) {
+        if(other.tag == "Wind") {
+            //_leafController.OutsideForce = 0;
+        }
+    }
 }

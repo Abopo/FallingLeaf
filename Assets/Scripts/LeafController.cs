@@ -113,7 +113,8 @@ public class LeafController : MonoBehaviour {
 
         DetermineVelocity();
 
-        transform.Translate((_velocity.x + _outsideForce) * Time.deltaTime, _velocity.y * Time.deltaTime, 0f, Space.World);
+        transform.Translate(_velocity.x * Time.deltaTime, _velocity.y * Time.deltaTime, 0f, Space.World);
+        transform.Translate(_outsideForce * Time.deltaTime, 0f, 0f, Space.World);
 
         StayInBounds();
         CheckPosition();
@@ -121,7 +122,10 @@ public class LeafController : MonoBehaviour {
         // Move camera along
         mainCamera.position = new Vector3(mainCamera.position.x, transform.position.y-15f, mainCamera.position.z);
 
-        _outsideForce = 0;
+        _outsideForce = _outsideForce / 1.1f;
+        if(Mathf.Abs(_outsideForce) < 0.5f) {
+            _outsideForce = 0;
+        }
     }
 
     void UpdateWind() {
@@ -209,10 +213,7 @@ public class LeafController : MonoBehaviour {
             }
         }
 
-        //xVel += _outsideForce /* * Time.deltaTime*/;
-
         _velocity = new Vector2(xVel, yVel);
-
     }
 
     void AnimateDistortion(float dif) {
