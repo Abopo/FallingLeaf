@@ -14,6 +14,7 @@ public class ObstacleSpawner : Spawner {
     float _spawnDistOffset;
 
     Obstacle _borderBranch; // spawned on the borders of the game to prevent players from staying there
+    Obstacle _darkBorderBranch; // just to keep visuals consistent in certain zones
 
     // Use this for initialization
     protected override void Start () {
@@ -23,7 +24,7 @@ public class ObstacleSpawner : Spawner {
 
         _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone1");
         _borderBranch = _curObstacles[0];
-
+        _darkBorderBranch = Resources.Load<Obstacle>("Prefabs/SpikeyZone/Branch1-6");
         _curZone = -1;
 
         UpdateDifficulty();
@@ -84,7 +85,7 @@ public class ObstacleSpawner : Spawner {
 
         if (_subDifficulty >= 10) {
             _mainDifficulty++;
-            if (_mainDifficulty > 3) {
+            if (_mainDifficulty > 1) {
                 _mainDifficulty = 4;
 
                 // At this point, new zone will be selected randomly
@@ -103,11 +104,11 @@ public class ObstacleSpawner : Spawner {
     }
 
     void LoadNextZone() {
-        int r = Random.Range(0, 4);
+        int r = Random.Range(0, 7);
 
         // Make sure the same zone doesn't happen twice in a row
         while (r == _curZone) {
-            r = Random.Range(0, 4);
+            r = Random.Range(0, 7);
         }
 
         _curZone = r;
@@ -127,6 +128,12 @@ public class ObstacleSpawner : Spawner {
             case 4:
                 _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone5");
                 break;
+            case 5:
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/SpikeyZone");
+                break;
+            case 6:
+                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/WindyZone");
+                break;
         }
     }
 
@@ -140,7 +147,12 @@ public class ObstacleSpawner : Spawner {
     }
 
     public void SpawnBorderBranch(float xPos) {
-        Obstacle newObstacle = GameObject.Instantiate(_borderBranch);
+        Obstacle newObstacle;
+        if(_curZone != 5) {
+            newObstacle = GameObject.Instantiate(_borderBranch);
+        } else {
+            newObstacle = GameObject.Instantiate(_darkBorderBranch);
+        }
         float posX = xPos < 0 ? -58 : 58;
         float posZ = transform.position.z + newObstacle.spawnOffsetZ;
         newObstacle.transform.position = new Vector3(posX, transform.position.y, posZ);

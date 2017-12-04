@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33817997299268390}
   - component: {fileID: 23617924033004402}
   - component: {fileID: 95214023386836302}
-  - component: {fileID: 135846973056867724}
   - component: {fileID: 114265718283517372}
   - component: {fileID: 54367894704487552}
+  - component: {fileID: 136743947990508682}
   m_Layer: 0
   m_Name: Sap
   m_TagString: Coin
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044718686266386}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -42, y: 0.8, z: -65.8}
+  m_LocalPosition: {x: -2.351213, y: 534.48486, z: 41.8}
   m_LocalScale: {x: 2.8918762, y: 2.891877, z: 2.891877}
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
---- !u!135 &135846973056867724
-SphereCollider:
+--- !u!136 &136743947990508682
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -137,6 +137,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.5498945
-  m_Center: {x: 0, y: -4.075753e-15, z: 0.5598946}
+  m_Radius: 1.53
+  m_Height: 6.14
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0.6}

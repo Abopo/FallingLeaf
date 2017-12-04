@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114150661720412944}
   - component: {fileID: 114585331653544452}
   m_Layer: 0
-  m_Name: Wind2-1
+  m_Name: Wind2-3
   m_TagString: Wind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595938727568896}
   m_LocalRotation: {x: -0.49063697, y: 0.49555194, z: -0.5028193, w: 0.5107606}
-  m_LocalPosition: {x: 0, y: 574.7, z: 22.04541}
+  m_LocalPosition: {x: 0, y: 625.3, z: 32.4}
   m_LocalScale: {x: 0.5059091, y: 0.50590897, z: 0.50590897}
   m_Children:
   - {fileID: 4756492251173658}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431039479094392}
   m_LocalRotation: {x: 0.01278156, y: -0.999712, z: -0.020312639, w: -0.000259702}
-  m_LocalPosition: {x: 94, y: -33, z: 315}
+  m_LocalPosition: {x: 89.9, y: -87.5, z: 284.4}
   m_LocalScale: {x: 0.74171567, y: 0.74171555, z: 0.74171555}
   m_Children: []
   m_Father: {fileID: 4675997213906902}
@@ -100,10 +100,10 @@ MonoBehaviour:
   spawnOffsetX: 0
   spawnOffsetLeft: 0
   spawnOffsetRight: 0
-  spawnChance: 20
+  spawnChance: 3
   spawnChanceChange: 0
   minSpawnDistance: 0
-  spawnDistanceOffset: 0
+  spawnDistanceOffset: -30
 --- !u!114 &114585331653544452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac22ef931d6ea28449416fd1dee140ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: -25
+  windForce: -30
 --- !u!198 &198006259519623042
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -182,7 +182,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 2.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -618,7 +618,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 5
     enabled: 1
-    type: 2
+    type: 5
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -626,7 +626,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1}
+    m_Scale: {x: 130, y: 30, z: 1}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
@@ -735,7 +735,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 12
+      scalar: 8
       minScalar: 10
       maxCurve:
         serializedVersion: 2

@@ -895,14 +895,14 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -165950906
+  randomSeed: 277906890
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1966,32 +1966,32 @@ ParticleSystem:
           outSlope: -1.7739618
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.29481155
-          value: -0.96927464
+          time: 0.28434402
+          value: -0.23850834
           inSlope: -2.6363134
           outSlope: -2.6363134
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.52173126
-          value: 0.96791565
+          time: 0.51910675
+          value: 0.27560723
           inSlope: 0.2580881
           outSlope: 0.2580881
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.7612495
-          value: -0.92794573
+          time: 0.72197336
+          value: -0.38948596
           inSlope: -6.2015653
           outSlope: -6.2015653
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.87066346
-          value: 1
+          time: 0.8785065
+          value: 0.5
           inSlope: 1.6748905
           outSlope: 1.6748905
           tangentMode: 0
         - serializedVersion: 2
           time: 1
-          value: -0.9893036
+          value: -0.37391663
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2009,31 +2009,31 @@ ParticleSystem:
           tangentMode: 0
         - serializedVersion: 2
           time: 0.27834785
-          value: 1
+          value: 0.4615383
           inSlope: 1.2904406
           outSlope: 1.2904406
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.53182197
-          value: -0.98439837
+          time: 0.5265882
+          value: -0.25363207
           inSlope: -2.3004413
           outSlope: -2.3004413
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.70274657
-          value: 0.89850193
+          time: 0.7132141
+          value: 0.5523487
           inSlope: 3.7530065
           outSlope: 3.7530065
           tangentMode: 0
         - serializedVersion: 2
           time: 0.88746434
-          value: -0.97293633
+          value: -0.43447655
           inSlope: -5.5757165
           outSlope: -5.5757165
           tangentMode: 0
         - serializedVersion: 2
           time: 1
-          value: 1
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
