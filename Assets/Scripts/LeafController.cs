@@ -27,11 +27,11 @@ public class LeafController : MonoBehaviour {
     float _rotationSpeed = 100f;
 
     // Wind ability
-    float _windForce = 175f;
-    float _windTime = 0.5f;
+    float _windForce = 175f; // 175f
+    float _windTime = 0.5f; // 0.5f
     float _windTimer = 0.6f;
-    public float windResource = 0.51f;
-    public float windResourceMax = 0.51f;
+    //public float windResource = 0.51f;
+    //public float windResourceMax = 0.51f;
 
     // Wind obstacle
     float _outsideForce = 0f;
@@ -49,7 +49,6 @@ public class LeafController : MonoBehaviour {
     public bool HasDied {
         get { return _hasDied; }
     }
-
 
     float startTime;
     Vector2 startPos;
@@ -82,10 +81,10 @@ public class LeafController : MonoBehaviour {
     }
 
     void InitPowerUps() {
-        if(PlayerPrefs.GetInt("UpdraftUnlocked") == 1) {
-            windResourceMax += 0.5f;
-            windResource = windResourceMax;
-        }
+        //if(PlayerPrefs.GetInt("UpdraftUnlocked") == 1) {
+        //    windResourceMax += 0.5f;
+        //    windResource = windResourceMax;
+       // }
         if(PlayerPrefs.GetInt("MagnetUnlocked") == 1) {
             magnetCollider.enabled = true;
         }
@@ -95,10 +94,10 @@ public class LeafController : MonoBehaviour {
         if(PlayerPrefs.GetInt("GaleforceUnlocked") == 1) {
             _windForce = 225f;
         }
-        if(PlayerPrefs.GetInt("SquallUnlocked") == 1) {
-            windResourceMax += 0.5f;
-            windResource = windResourceMax;
-        }
+       // if(PlayerPrefs.GetInt("SquallUnlocked") == 1) {
+        //    windResourceMax += 0.5f;
+        //    windResource = windResourceMax;
+       // }
     }
 
     // Update is called once per frame
@@ -130,10 +129,10 @@ public class LeafController : MonoBehaviour {
 
     void UpdateWind() {
         _windTimer += Time.deltaTime;
-        windResource += Time.deltaTime / 25;
-        if (windResource > windResourceMax) {
-            windResource = windResourceMax;
-        }
+        //windResource += Time.deltaTime / 25;
+        //if (windResource > windResourceMax) {
+        //    windResource = windResourceMax;
+        //}
         //Debug.Log(windResource.ToString());
     }
 
@@ -146,7 +145,7 @@ public class LeafController : MonoBehaviour {
             // rotate right
             transform.Rotate(0f, 0f, -_rotationSpeed * Time.deltaTime);
         }
-        if((Input.GetKey(KeyCode.Space) || SwipedUp()) && windResource > _windTime) {
+        if((Input.GetKey(KeyCode.Space) || SwipedUp()) && gameEffects.CanWindBurst() && _windTimer >= _windTime/*windResource > _windTime*/) {
             // Wind burst
             _windTimer = 0f;
             gameEffects.WindBurst();
@@ -193,10 +192,10 @@ public class LeafController : MonoBehaviour {
         // If we used a wind burst, override downward velocity
         if (_windTimer <= _windTime) {
             yVel = _velocity.y + (_windForce * Time.deltaTime);
-            windResource -= Time.deltaTime;
-            if(windResource < 0) {
-                windResource = 0;
-            }
+            //windResource -= Time.deltaTime;
+            //if(windResource < 0) {
+            //    windResource = 0;
+            //}
         } else {
             yVel = _velocity.y - (_moveAccelerationY * Time.deltaTime);
 
@@ -245,7 +244,7 @@ public class LeafController : MonoBehaviour {
             _borderTimer += Time.deltaTime;
             if(_borderTimer >= _borderTime) {
                 obstacleSpawner.SpawnBorderBranch(transform.position.x);
-                _borderTimer = -2f;
+                _borderTimer = -3f;
             }
         } else {
             _borderTime = 0f;

@@ -23,6 +23,6 @@ public class NutSpawner : MonoBehaviour {
 	}
 
     void SpawnNut() {
-        GameObject newNut = GameObject.Instantiate(spikeyNutObj, transform.position, Quaternion.identity);
+        GameObject.Instantiate(spikeyNutObj, transform.position, Quaternion.identity);
     }
 }

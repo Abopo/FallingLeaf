@@ -749,6 +749,10 @@ MonoBehaviour:
   leafPlayer: {fileID: 0}
   windBurstEffect: {fileID: 198612946431971910}
   windMeter: {fileID: 0}
+  windResources:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114159658487965682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -895,7 +899,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 277906890
+  randomSeed: -400092938
   InitialModule:
     serializedVersion: 3
     enabled: 1
