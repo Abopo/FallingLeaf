@@ -27,7 +27,12 @@ public class CoinSpawner : Spawner {
     protected override float DecideNextSpawnDistance() {
         float nextSpawn;
         nextSpawn = Random.Range(_maxSpawnDistance - 50, _maxSpawnDistance);
-        _maxSpawnDistance--;
+        _maxSpawnDistance -= 2;
+        if(_maxSpawnDistance < 75) {
+            _maxSpawnDistance = 75;
+        }
+
+        //Debug.Log(_maxSpawnDistance.ToString());
 
         return nextSpawn;
     }

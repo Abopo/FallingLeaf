@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+//using UnityEngine.Advertisements;
 
 public class LevelManager : MonoBehaviour {
     public GameObject gameOverScreen;
@@ -14,6 +15,8 @@ public class LevelManager : MonoBehaviour {
     float _yDif;
 
     int _collectedCoins;
+
+    static int _playCount = 0;
 
     // Use this for initialization
     void Start () {
@@ -48,6 +51,13 @@ public class LevelManager : MonoBehaviour {
 
         // Save coins
         PlayerPrefs.SetInt("Coins", _collectedCoins);
+
+        _playCount++;
+        if(_playCount >= Random.Range(3,5)) {
+            Debug.Log("Showing ad");
+            //Advertisement.Show();
+            _playCount = 0;
+        }
     }
 
     public void ResetLevel() {

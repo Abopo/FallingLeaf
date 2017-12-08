@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 4287722524727140}
   - component: {fileID: 114699928264376944}
   m_Layer: 0
-  m_Name: TwoBranches3-4
+  m_Name: Line3-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

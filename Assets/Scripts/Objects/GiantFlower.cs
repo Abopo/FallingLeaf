@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GiantFlower : MonoBehaviour {
 
-    float fallSpeed = 10f;
+    float fallSpeed = 9f;
     float rotateSpeed = 50f;
 
 	// Use this for initialization

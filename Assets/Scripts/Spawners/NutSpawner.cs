@@ -5,7 +5,7 @@ using UnityEngine;
 public class NutSpawner : MonoBehaviour {
     public GameObject spikeyNutObj;
 
-    float _spawnTime = 2.5f;
+    float _spawnTime = 2.25f;
     float _spawnTimer = 1.0f;
 
 	// Use this for initialization

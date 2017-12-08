@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : Spawner {
     Obstacle[] _curObstacles;
+    Obstacle[][] _allObstacles;
 
     int _mainDifficulty;
     int _subDifficulty;
@@ -22,7 +23,8 @@ public class ObstacleSpawner : Spawner {
 
         _mainDifficulty = 1;
 
-        _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone1");
+        LoadObstacles();
+        //_curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone1");
         _borderBranch = _curObstacles[0];
         _darkBorderBranch = Resources.Load<Obstacle>("Prefabs/SpikeyZone/Branch1-6");
         _curZone = -1;
@@ -30,6 +32,23 @@ public class ObstacleSpawner : Spawner {
         UpdateDifficulty();
         _spawnDistance = DecideNextSpawnDistance();
 	}
+
+    void LoadObstacles() {
+        _allObstacles = new Obstacle[10][];
+
+        _allObstacles[0] = Resources.LoadAll<Obstacle>("Prefabs/BasicZone1");
+        _allObstacles[1] = Resources.LoadAll<Obstacle>("Prefabs/BasicZone2");
+        _allObstacles[2] = Resources.LoadAll<Obstacle>("Prefabs/BasicZone3");
+        _allObstacles[3] = Resources.LoadAll<Obstacle>("Prefabs/BasicZone4");
+        _allObstacles[4] = Resources.LoadAll<Obstacle>("Prefabs/BasicZone5");
+        _allObstacles[5] = Resources.LoadAll<Obstacle>("Prefabs/FlowerZone");
+        _allObstacles[6] = Resources.LoadAll<Obstacle>("Prefabs/BirdZone");
+        _allObstacles[7] = Resources.LoadAll<Obstacle>("Prefabs/VillageZone");
+        _allObstacles[8] = Resources.LoadAll<Obstacle>("Prefabs/SpikeyZone");
+        _allObstacles[9] = Resources.LoadAll<Obstacle>("Prefabs/WindyZone");
+
+        _curObstacles = _allObstacles[0];
+    }
 
     // Update is called once per frame
     protected override void Update () {
@@ -85,14 +104,15 @@ public class ObstacleSpawner : Spawner {
 
         if (_subDifficulty >= 10) {
             _mainDifficulty++;
-            if (_mainDifficulty > 1) {
+            if (_mainDifficulty > 3) {
                 _mainDifficulty = 4;
 
                 // At this point, new zone will be selected randomly
                 LoadNextZone();
             } else {
                 // Load in the  new obstacles
-                _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone" + _mainDifficulty);
+                //_curObstacles = Resources.LoadAll<Obstacle>("Prefabs/BasicZone" + _mainDifficulty);
+                _curObstacles = _allObstacles[_mainDifficulty-1];
             }
 
             _subDifficulty = 0;
@@ -112,6 +132,8 @@ public class ObstacleSpawner : Spawner {
         }
 
         _curZone = r;
+        _curObstacles = _allObstacles[3 + r];
+        /*
         switch (r) {
             case 0: // Flower zone
                 _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/FlowerZone");
@@ -135,6 +157,7 @@ public class ObstacleSpawner : Spawner {
                 _curObstacles = Resources.LoadAll<Obstacle>("Prefabs/WindyZone");
                 break;
         }
+        */
     }
 
     protected override float DecideNextSpawnDistance() {

@@ -1827,7 +1827,7 @@ MonoBehaviour:
   spawnOffsetX: 20
   spawnOffsetLeft: 0
   spawnOffsetRight: 0
-  spawnChance: 3
+  spawnChance: 4
   spawnChanceChange: 0
   minSpawnDistance: 30
   spawnDistanceOffset: 0

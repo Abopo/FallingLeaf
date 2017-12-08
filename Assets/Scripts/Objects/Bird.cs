@@ -22,7 +22,7 @@ public class Bird : MonoBehaviour {
             leftX = -60f;
             rightX = 60f;
         } else {
-            float offset = Random.Range(20f, 40f);
+            float offset = 50 /*Random.Range(20f, 40f)*/;
             leftX = transform.position.x - offset;
             rightX = transform.position.x + offset;
         }
@@ -40,8 +40,8 @@ public class Bird : MonoBehaviour {
 	void Update () {
         transform.Translate(velocity * Time.deltaTime, 0f, 0f);
         // If we have reached the target point
-        if((velocity > 0 && transform.position.x > rightX) ||
-            (velocity < 0 && transform.position.x < leftX)) {
+        if((velocity > 0 && (transform.position.x > rightX || transform.position.x > 60)) ||
+            (velocity < 0 && (transform.position.x < leftX || transform.position.x < -60))) {
             TurnAround();
         }
     }

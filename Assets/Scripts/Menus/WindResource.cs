@@ -33,7 +33,7 @@ public class WindResource : MonoBehaviour {
 		if((prevBar == null || (prevBar != null && prevBar.isFull)) && !isFull && !_isDraining) {
             // Fill up the bar
             _meter.sizeDelta = new Vector2(_meter.sizeDelta.x,
-                                            _meter.sizeDelta.y + (5.0f * Time.deltaTime));
+                                            _meter.sizeDelta.y + (4.5f * Time.deltaTime));
             if(_meter.sizeDelta.y >= _meterHeight) {
                 // Filled
                 _meter.sizeDelta = new Vector2(_meter.sizeDelta.x, _meterHeight);

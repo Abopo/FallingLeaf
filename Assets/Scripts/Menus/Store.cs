@@ -88,18 +88,18 @@ public class Store : MonoBehaviour {
     }
 
     public void WindBuff1Selected() {
-        itemName.text = "Updraft - $1000";
+        itemName.text = "Updraft - $500";
         itemDescription.text = "Increase the amount of wind you can use";
         selectedItem = SHOP_ITEMS.WIND1;
-        curItemCost = 1000;
+        curItemCost = 500;
         UpdateBuyButton("UpdraftUnlocked");
     }
 
     public void LeafShieldSelected() {
-        itemName.text = "Leaf Guard - $2000";
+        itemName.text = "Leaf Guard - $1000";
         itemDescription.text = "Take an extra hit before dying";
         selectedItem = SHOP_ITEMS.SHIELD;
-        curItemCost = 2000;
+        curItemCost = 1000;
         UpdateBuyButton("ShieldUnlocked");
     }
 

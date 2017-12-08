@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4581180929970412}
   - component: {fileID: 114903399534972268}
+  - component: {fileID: 82487351425078318}
   m_Layer: 0
   m_Name: PlayerLeaf
   m_TagString: PlayerLeaf
@@ -76,7 +77,7 @@ GameObject:
   - component: {fileID: 135222585231120356}
   m_Layer: 0
   m_Name: Magnet
-  m_TagString: Untagged
+  m_TagString: Magnet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +157,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1330030158202864}
-  m_LocalRotation: {x: -0.0069862637, y: 0.008123029, z: -0.0059575667, w: 0.9999249}
+  m_LocalRotation: {x: -0.0069374554, y: 0.008167898, z: 0.00005666768, w: 0.9999426}
   m_LocalPosition: {x: -0.1, y: 609, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -166,7 +167,7 @@ Transform:
   - {fileID: 4301076645193546}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.795, y: 0.93600005, z: -0.689}
+  m_LocalEulerAnglesHint: {x: -0.795, y: 0.93600005, z: 0}
 --- !u!23 &23831275223046992
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -301,6 +302,86 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82487351425078318
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330030158202864}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 69d9a449c9cd8ce46a6349c26754f14f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -654,13 +735,13 @@ MonoBehaviour:
     showInEditor: 1
     calculateInWorldSpace: 0
   combinedBounds:
-    m_Center: {x: 0.37640098, y: 608.83057, z: 39.67073}
-    m_Extent: {x: 6.29167, y: 1.4509838, z: 6.334593}
+    m_Center: {x: 0.37834668, y: 608.83636, z: 39.670616}
+    m_Extent: {x: 6.295794, y: 1.4634945, z: 6.334581}
   showDebugLines: 0
   debugLinesDistance: 1
   showMeshInEditor: 1
   showPreviewWindow: 0
-  calculateInGPU: 1
+  calculateInGPU: 0
   distortShader: {fileID: 7200000, guid: 340764ea8234f1d47ae7fc3c808ff0c4, type: 3}
 --- !u!114 &114903399534972268
 MonoBehaviour:
@@ -677,11 +758,9 @@ MonoBehaviour:
   obstacleSpawner: {fileID: 0}
   model: {fileID: 23831275223046992}
   gameEffects: {fileID: 0}
-  magnetCollider: {fileID: 0}
+  magnetCollider: {fileID: 135222585231120356}
   tutorials: {fileID: 0}
   _velocity: {x: 0, y: 0}
-  windResource: 0.51
-  windResourceMax: 0.51
 --- !u!135 &135222585231120356
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -689,10 +768,10 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1796413883312130}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198557366577301456
 ParticleSystem:
@@ -750,10 +829,10 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 771919536
+  randomSeed: -219346165
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1027,7 +1106,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -1068,7 +1147,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -1109,8 +1188,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 6.283185
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1148,7 +1227,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    randomizeRotationDirection: 0
+    randomizeRotationDirection: 1
     maxNumParticles: 1000
     size3D: 0
     rotation3D: 0
@@ -1612,8 +1691,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.7853982
-      minScalar: -0.7853981
+      scalar: 1.3962634
+      minScalar: -1.3962634
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1717,12 +1796,12 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     frameOverTime:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 0.9999
+      minMaxState: 0
+      scalar: 0.25
       minScalar: 0.9999
       maxCurve:
         serializedVersion: 2
@@ -1802,8 +1881,8 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     tilesX: 1
-    tilesY: 1
-    animationType: 0
+    tilesY: 4
+    animationType: 1
     rowIndex: 0
     cycles: 1
     uvChannelMask: -1
@@ -1811,7 +1890,10 @@ ParticleSystem:
     flipV: 0
     randomRow: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 21300000, guid: e8aea9031d5adc444927558f1e2a202a, type: 3}
+    - sprite: {fileID: 21300002, guid: e8aea9031d5adc444927558f1e2a202a, type: 3}
+    - sprite: {fileID: 21300004, guid: e8aea9031d5adc444927558f1e2a202a, type: 3}
+    - sprite: {fileID: 21300006, guid: e8aea9031d5adc444927558f1e2a202a, type: 3}
   VelocityModule:
     enabled: 1
     x:
@@ -3975,7 +4057,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: d99b1dc2f23fb1f49a8caf168047f1d4, type: 2}
+  - {fileID: 2100000, guid: 0ca35019fabf064469b4e1aa5c9ba152, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4008,7 +4090,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}

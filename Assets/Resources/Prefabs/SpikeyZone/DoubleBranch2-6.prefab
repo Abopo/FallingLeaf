@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 54182623870732684}
   - component: {fileID: 136469151197830996}
   m_Layer: 0
-  m_Name: DoubleBranch2-5
+  m_Name: DoubleBranch2-6
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,7 +583,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c70e9e7b3367e4345b970abe77ea8a4a, type: 2}
+  - {fileID: 2100000, guid: 8d75eac85070e5d4a9d9b7b7bc85ceae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -808,7 +808,7 @@ MonoBehaviour:
   spawnOffsetX: 45
   spawnOffsetLeft: 0
   spawnOffsetRight: 0
-  spawnChance: 15
+  spawnChance: 5
   spawnChanceChange: 0
   minSpawnDistance: 20
   spawnDistanceOffset: 0

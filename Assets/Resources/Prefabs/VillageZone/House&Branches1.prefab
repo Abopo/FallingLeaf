@@ -2058,7 +2058,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214547095436732}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1194.8696, y: 897.5153, z: -2643.5732}
+  m_LocalPosition: {x: 38.414673, y: 508.9448, z: -2647.0022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4131660658224968}
@@ -7269,7 +7269,7 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1118459548852634}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
@@ -7283,7 +7283,7 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515091622517768}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
@@ -7337,7 +7337,7 @@ MonoBehaviour:
   spawnOffsetLeft: -50
   spawnOffsetRight: -35
   spawnChance: 10
-  spawnChanceChange: 0
+  spawnChanceChange: -1
   minSpawnDistance: 150
   spawnDistanceOffset: 0
 --- !u!135 &135206282779338306

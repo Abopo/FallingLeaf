@@ -54,7 +54,7 @@ public class LeafController : MonoBehaviour {
     Vector2 startPos;
     bool couldBeSwipe;
     float comfortZone = 300;
-    float minSwipeDist = 75;
+    float minSwipeDist = 85;
     float maxSwipeTime = 0.5f;
 
     // These track how long the player is riding the border (will spawn a branch there if it's too long)
@@ -89,7 +89,7 @@ public class LeafController : MonoBehaviour {
             magnetCollider.enabled = true;
         }
         if(PlayerPrefs.GetInt("RotationUnlocked") == 1) {
-            _rotationSpeed = 145f;
+            _rotationSpeed = 135f;
         }
         if(PlayerPrefs.GetInt("GaleforceUnlocked") == 1) {
             _windForce = 225f;
@@ -244,7 +244,7 @@ public class LeafController : MonoBehaviour {
             _borderTimer += Time.deltaTime;
             if(_borderTimer >= _borderTime) {
                 obstacleSpawner.SpawnBorderBranch(transform.position.x);
-                _borderTimer = -3f;
+                _borderTimer = -4f;
             }
         } else {
             _borderTime = 0f;

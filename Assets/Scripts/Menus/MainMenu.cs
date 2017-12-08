@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 public class MainMenu : MonoBehaviour {
 
@@ -29,6 +30,9 @@ public class MainMenu : MonoBehaviour {
         distanceRecord.text = "Best: " + PlayerPrefs.GetInt("BestDistance").ToString() + "m";
 
         SetScreenResolution();
+
+        // Unity ads stuff
+        //Advertisement.Initialize("1630071");
     }
 
     void SetScreenResolution() {

@@ -14,7 +14,7 @@ public class InfiniteTreeTrunk : MonoBehaviour {
     // Use this for initialization
     void Start () {
         // Spawn initial trunks
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y - 378.9f, 249f);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y - 378f, 249f);
         treeTrunks[0] = GameObject.Instantiate(treeTrunkObj, pos, Quaternion.identity);
         pos.y = treeTrunks[0].transform.position.y - 378f;
         treeTrunks[1] = GameObject.Instantiate(treeTrunkObj, pos, Quaternion.identity);
@@ -44,7 +44,7 @@ public class InfiniteTreeTrunk : MonoBehaviour {
     }
 
     void SpawnTrunk() {
-        Vector3 pos = new Vector3(transform.position.x, treeTrunks[5].transform.position.y - 378f, 250f);
+        Vector3 pos = new Vector3(transform.position.x, treeTrunks[5].transform.position.y - 378f, 249f);
         GameObject newTrunk = GameObject.Instantiate(treeTrunkObj, pos, Quaternion.identity);
         DestroyObject(treeTrunks[0]);
 

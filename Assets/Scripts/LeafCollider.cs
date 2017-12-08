@@ -8,7 +8,7 @@ public class LeafCollider : MonoBehaviour {
     public AudioClip _death;
 
     int _shield;
-    float _invulnTime = 2.0f;
+    float _invulnTime = 1.0f;
     float _invulnTimer = 3.0f;
 
     LevelManager _levelManager;
