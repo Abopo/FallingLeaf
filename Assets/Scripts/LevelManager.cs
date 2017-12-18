@@ -52,12 +52,14 @@ public class LevelManager : MonoBehaviour {
         // Save coins
         PlayerPrefs.SetInt("Coins", _collectedCoins);
 
-        _playCount++;
+#if UNITY_ANDROID
+         _playCount++;
         if(_playCount >= Random.Range(3,5)) {
             Debug.Log("Showing ad");
-            //Advertisement.Show();
+            Advertisement.Show();
             _playCount = 0;
         }
+#endif
     }
 
     public void ResetLevel() {

@@ -8,6 +8,9 @@ using UnityEngine.Advertisements;
 public class MainMenu : MonoBehaviour {
 
     public Text distanceRecord;
+    public GameObject daynightObj;
+
+    GameObject _daynightCycle = null;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +18,7 @@ public class MainMenu : MonoBehaviour {
 
         if (PlayerPrefs.GetInt("FirstTime") == 0) {
             PlayerPrefs.SetInt("BestDistance", 0);
-            PlayerPrefs.SetInt("Coins", 0);
+            PlayerPrefs.SetInt("Coins", 10000);
             PlayerPrefs.SetInt("UpdraftUnlocked", 0);
             PlayerPrefs.SetInt("ShieldUnlocked", 0);
             PlayerPrefs.SetInt("RotationUnlocked", 0);
@@ -29,10 +32,18 @@ public class MainMenu : MonoBehaviour {
 
         distanceRecord.text = "Best: " + PlayerPrefs.GetInt("BestDistance").ToString() + "m";
 
-        SetScreenResolution();
+        _daynightCycle = GameObject.FindGameObjectWithTag("DayNight");
+        if(_daynightCycle == null) {
+            _daynightCycle = GameObject.Instantiate(daynightObj);
+        }
 
+#if UNITY_STANDALONE
+        SetScreenResolution();
+#endif
+#if UNITY_ANDROID
         // Unity ads stuff
-        //Advertisement.Initialize("1630071");
+        Advertisement.Initialize("1630071");
+#endif
     }
 
     void SetScreenResolution() {

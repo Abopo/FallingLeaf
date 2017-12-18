@@ -244,10 +244,13 @@ public class LeafController : MonoBehaviour {
             _borderTimer += Time.deltaTime;
             if(_borderTimer >= _borderTime) {
                 obstacleSpawner.SpawnBorderBranch(transform.position.x);
-                _borderTimer = -4f;
+                _borderTimer = -3f;
             }
         } else {
-            _borderTime = 0f;
+            if(_borderTime < 0f) {
+                _borderTime += Time.deltaTime;
+            }
+            //_borderTime = 0f;
         }
     }
 

@@ -37,6 +37,10 @@ public class DayNightCycle : MonoBehaviour {
     Material nightSkybox;
     Vector3 nightSkyboxRotation = new Vector3(-35f, -5f, 2f);
 
+    internal TIME CurTime {
+        get { return curTime; } 
+    }
+
     // Use this for initialization
     void Start () {
         DontDestroyOnLoad(this.gameObject);

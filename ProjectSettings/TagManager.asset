@@ -11,6 +11,7 @@ TagManager:
   - Magnet
   - Sunlight
   - Wind
+  - DayNight
   layers:
   - Default
   - TransparentFX
